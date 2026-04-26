@@ -1,0 +1,215 @@
+/* main.css - Global Styles & Utilities */
+
+/* Layout Utilities */
+.section-padding {
+    padding: 5rem 0;
+}
+
+.bg-light-gray {
+    background-color: var(--bg-color);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navbar Customization */
+.navbar-public {
+    padding: 1rem 0;
+    background-color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.top-header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+    border-radius: var(--radius-md);
+}
+
+/* Stats Cards */
+.stat-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+/* Dev Role Switcher Panel */
+#role-switcher-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#role-switcher-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-base);
+}
+
+#role-switcher-toggle:hover {
+    transform: rotate(30deg);
+}
+
+#role-switcher-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background-color: #fff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: 1rem;
+    width: 200px;
+    display: none;
+}
+
+#role-switcher-menu.active {
+    display: block;
+}
+
+.role-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+}
+
+.role-option:hover {
+    background-color: var(--bg-color);
+}
+
+.role-option.active {
+    background-color: var(--secondary-light);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* Role Switcher Toast Notification */
+.role-toast {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    z-index: 10000;
+    box-shadow: var(--shadow-lg);
+}
+
+.role-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.role-toast.success {
+    background-color: #28a745;
+}
+
+.role-toast.error {
+    background-color: #dc3545;
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(10px); }
+}
+
+/* Utilities */
+.border-dashed {
+    border: 2px dashed var(--border-color) !important;
+}
+
+#thumbnail-dropzone:hover {
+    border-color: var(--secondary-color) !important;
+    background-color: var(--secondary-light) !important;
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Detail - LMS Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        .course-hero {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 4rem 0;
+            position: relative;
+        }
+        .course-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-color) 40%, transparent 100%);
+            z-index: 1;
+        }
+        .course-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .sticky-card {
+            position: sticky;
+            top: 100px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-public sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
+                <span>LMS Platform</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Browse Courses</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="login.html" class="btn btn-outline-primary">Login</a>
+                    <a href="register.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Hero -->
+    <section class="course-hero overflow-hidden">
+        <img src="assets/images/course_web_dev.png" class="position-absolute top-0 end-0 h-100 w-50 object-fit-cover opacity-25" alt="Course Background">
+        <div class="container course-hero-content">
+            <div class="row">
+                <div class="col-lg-7">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="courses.html" class="text-white-50">Courses</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="text-white-50">Development</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">Web Development</li>
+                        </ol>
+                    </nav>
+                    <h1 class="display-4 fw-bold mb-3">Full-Stack Web Development Bootcamp 2026</h1>
+                    <p class="lead mb-4 opacity-75">Become a professional full-stack web developer. Learn HTML, CSS, JavaScript, Node.js, and more from scratch.</p>
+                    <div class="d-flex flex-wrap gap-4 mb-4">
+                        <div class="d-flex align-items-center"><i class="bi bi-star-fill text-warning me-2"></i> 4.8 (2,450 ratings)</div>
+                        <div class="d-flex align-items-center"><i class="bi bi-people me-2"></i> 12,450 students enrolled</div>
+                        <div class="d-flex align-items-center"><i class="bi bi-patch-check me-2"></i> Last updated 03/2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container section-padding">
+        <div class="row g-5">
+            <!-- Left Column: Details -->
+            <div class="col-lg-8">
+                <div class="card p-4 mb-5">
+                    <h2 class="h3 mb-4">What you'll learn</h2>
+                    <div class="row g-3">
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Build 10+ real-world web projects.</div>
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Master HTML5, CSS3, and modern layouts.</div>
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Deep dive into JavaScript (ES6+).</div>
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Learn Backend with Node.js and Express.</div>
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Work with Databases (MongoDB/SQL).</div>
+                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Deploy applications to the cloud.</div>
+                    </div>
+                </div>
+
+                <h2 class="h3 mb-4">Course Content</h2>
+                <div class="accordion" id="courseAccordion">
+                    <!-- Module 1 -->
+                    <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#module1">
+                                Module 1: Introduction to Web Development
+                            </button>
+                        </h2>
+                        <div id="module1" class="accordion-collapse collapse show" data-bs-parent="#courseAccordion">
+                            <div class="accordion-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-play-circle me-3 text-secondary"></i>
+                                            <span>How the Web Works</span>
+                                        </div>
+                                        <span class="badge bg-light text-muted">10:00</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-lock me-3 text-muted"></i>
+                                            <span class="text-muted">Setting up Development Environment</span>
+                                        </div>
+                                        <i class="bi bi-lock text-muted"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 2 -->
+                    <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#module2">
+                                Module 2: HTML5 & Semantic Web
+                            </button>
+                        </h2>
+                        <div id="module2" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                            <div class="accordion-body p-0">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-lock me-3 text-muted"></i>
+                                            <span class="text-muted">HTML Document Structure</span>
+                                        </div>
+                                        <i class="bi bi-lock text-muted"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h2 class="h3 mb-4">Description</h2>
+                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <p class="text-secondary">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Sidebar Card -->
+            <div class="col-lg-4">
+                <div class="card sticky-card border-0 shadow-lg overflow-hidden">
+                    <img src="assets/images/course_web_dev.png" class="card-img-top" alt="Course Thumbnail">
+                    <div class="card-body p-4 text-center">
+                        <div class="h2 fw-bold mb-3">$89.99</div>
+                        <a href="register.html" class="btn btn-primary w-100 btn-lg mb-3">Enroll Now</a>
+                        <p class="small text-muted mb-4">30-Day Money-Back Guarantee</p>
+                        
+                        <div class="text-start">
+                            <h6 class="fw-bold mb-3">This course includes:</h6>
+                            <ul class="list-unstyled d-grid gap-2 small">
+                                <li><i class="bi bi-display me-2"></i> 48 hours on-demand video</li>
+                                <li><i class="bi bi-file-earmark-arrow-down me-2"></i> 12 downloadable resources</li>
+                                <li><i class="bi bi-infinity me-2"></i> Full lifetime access</li>
+                                <li><i class="bi bi-phone me-2"></i> Access on mobile and TV</li>
+                                <li><i class="bi bi-trophy me-2"></i> Certificate of completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-top py-5">
+        <div class="container text-center">
+            <p class="text-muted small">&copy; 2026 LMS Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/role-switcher.js"></script>
+</body>
+</html>

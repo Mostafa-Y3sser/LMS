@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning View - LMS Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .learn-sidebar {
+            width: 320px;
+            background-color: #fff;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        .learn-content {
+            flex: 1;
+            padding: 0;
+            background-color: #fff;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            background-color: #000;
+        }
+        .video-container iframe, .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .module-list {
+            overflow-y: auto;
+            flex: 1;
+        }
+        .lesson-item {
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border-left: 3px solid transparent;
+        }
+        .lesson-item:hover {
+            background-color: var(--bg-color);
+        }
+        .lesson-item.active {
+            background-color: var(--secondary-light);
+            border-left-color: var(--secondary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        .lesson-item.locked {
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+        .lesson-icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Course Nav Sidebar -->
+        <aside class="learn-sidebar">
+            <div class="p-4 border-bottom">
+                <a href="dashboard.html" class="text-secondary small mb-3 d-block"><i class="bi bi-arrow-left"></i> Back to Dashboard</a>
+                <h1 class="h6 fw-bold mb-3">Full-Stack Web Development Bootcamp</h1>
+                <div class="progress mb-2" style="height: 6px;">
+                    <div class="progress-bar" role="progressbar" style="width: 65%;"></div>
+                </div>
+                <div class="small text-muted">65% Complete (12/18)</div>
+            </div>
+            
+            <div class="module-list">
+                <!-- Module 1 -->
+                <div class="module-group">
+                    <div class="p-3 bg-light small fw-bold text-uppercase border-bottom">Module 1: Introduction</div>
+                    <div class="lesson-item">
+                        <i class="bi bi-check-circle-fill text-accent lesson-icon"></i>
+                        <span>1.1 How the Web Works</span>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="bi bi-check-circle-fill text-accent lesson-icon"></i>
+                        <span>1.2 Development Setup</span>
+                    </div>
+                </div>
+                <!-- Module 2 -->
+                <div class="module-group">
+                    <div class="p-3 bg-light small fw-bold text-uppercase border-bottom border-top">Module 2: HTML5 & CSS3</div>
+                    <div class="lesson-item active">
+                        <i class="bi bi-play-circle-fill lesson-icon"></i>
+                        <span>2.1 Semantic HTML Basics</span>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="bi bi-circle lesson-icon"></i>
+                        <span>2.2 CSS Selectors & Box Model</span>
+                    </div>
+                    <div class="lesson-item">
+                        <i class="bi bi-circle lesson-icon"></i>
+                        <span>2.3 Flexbox Layouts</span>
+                    </div>
+                </div>
+                <!-- Module 3 (Locked) -->
+                <div class="module-group">
+                    <div class="p-3 bg-light small fw-bold text-uppercase border-bottom border-top">Module 3: JavaScript</div>
+                    <div class="lesson-item locked">
+                        <i class="bi bi-lock lesson-icon"></i>
+                        <span>3.1 Intro to Variables</span>
+                    </div>
+                    <div class="lesson-item locked">
+                        <i class="bi bi-lock lesson-icon"></i>
+                        <span>3.2 Functions & Scope</span>
+                    </div>
+                </div>
+                <!-- Assignment -->
+                <div class="module-group mt-3 px-3">
+                    <a href="assignment.html" class="btn btn-outline-secondary btn-sm w-100 mb-3">
+                        <i class="bi bi-file-earmark-text"></i> Final Assignment
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="learn-content overflow-auto">
+            <!-- Video Player -->
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="text-center">
+                        <i class="bi bi-play-circle display-1 mb-3"></i>
+                        <p class="h4">Video Player Placeholder</p>
+                        <p class="opacity-50">2.1 Semantic HTML Basics (15:42)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 p-md-5">
+                <div class="d-flex justify-content-between align-items-start mb-4">
+                    <div>
+                        <h2 class="fw-bold">2.1 Semantic HTML Basics</h2>
+                        <p class="text-muted">Module 2: HTML5 & CSS3 • Published March 12, 2026</p>
+                    </div>
+                    <a href="#" class="btn btn-light border"><i class="bi bi-download"></i> Resources</a>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="rich-text-content">
+                    <h3 class="h4 mb-3">Lesson Overview</h3>
+                    <p>In this lesson, we will cover the importance of semantic HTML tags and how they help both browsers and search engines understand the structure of your content. Semantic HTML isn't just about accessibility; it's about building a solid foundation for your web applications.</p>
+                    
+                    <h4 class="h5 mt-4 mb-3">Key Tags Covered:</h4>
+                    <ul>
+                        <li><code>&lt;header&gt;</code> - Defines a header for a document or a section</li>
+                        <li><code>&lt;nav&gt;</code> - Defines a set of navigation links</li>
+                        <li><code>&lt;main&gt;</code> - Specifies the main content of a document</li>
+                        <li><code>&lt;article&gt;</code> - Specifies independent, self-contained content</li>
+                        <li><code>&lt;section&gt;</code> - Defines a section in a document</li>
+                        <li><code>&lt;footer&gt;</code> - Defines a footer for a document or a section</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-4">
+                        <i class="bi bi-info-circle me-2"></i> <strong>Note:</strong> Using the correct tags improves SEO and helps screen readers navigate your site more efficiently.
+                    </div>
+                </div>
+
+                <div class="mt-5 pt-4 border-top d-flex justify-content-between align-items-center">
+                    <button class="btn btn-outline-secondary"><i class="bi bi-chevron-left"></i> Previous Lesson</button>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-accent text-white px-4">Mark as Complete</button>
+                        <button class="btn btn-primary px-4">Next Lesson <i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/role-switcher.js"></script>
+</body>
+</html>
+
