@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="d-flex gap-2">
                                         <a href="lessons.html" class="btn btn-light btn-sm px-3">Manage Lessons</a>
-                                        <button class="btn btn-light btn-sm"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#editModuleModal"><i class="bi bi-pencil"></i></button>
                                         <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class="d-flex gap-2">
                                         <a href="lessons.html" class="btn btn-light btn-sm px-3">Manage Lessons</a>
-                                        <button class="btn btn-light btn-sm"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#editModuleModal"><i class="bi bi-pencil"></i></button>
                                         <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
@@ -147,7 +147,74 @@
                             <label class="form-label small fw-bold">Module Title</label>
                             <input type="text" class="form-control" placeholder="e.g. Getting Started with React" required>
                         </div>
+                        <div class="mb-4 border-top pt-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label class="form-label fw-bold mb-0">Module Assignment</label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input modal-assignment-toggle" type="checkbox">
+                                    <label class="form-check-label small">Enable</label>
+                                </div>
+                            </div>
+                            <div class="assignment-fields d-none bg-light p-3 rounded border">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Assignment Title</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="e.g. Build a landing page">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Instructions</label>
+                                    <textarea class="form-control form-control-sm" rows="2" placeholder="Describe the requirements..."></textarea>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-bold">Attachment (Optional)</label>
+                                    <input type="file" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary w-100 py-2">Create Module</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Module Modal -->
+    <div class="modal fade" id="editModuleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold">Edit Module</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Module Title</label>
+                            <input type="text" class="form-control" value="Module 1: Introduction to the Course" required>
+                        </div>
+                        <div class="mb-4 border-top pt-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label class="form-label fw-bold mb-0">Module Assignment</label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input modal-assignment-toggle" type="checkbox" checked>
+                                    <label class="form-check-label small">Enable</label>
+                                </div>
+                            </div>
+                            <div class="assignment-fields bg-light p-3 rounded border">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Assignment Title</label>
+                                    <input type="text" class="form-control form-control-sm" value="Initial Setup Assignment">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Instructions</label>
+                                    <textarea class="form-control form-control-sm" rows="2">Set up your development environment and upload a screenshot of your VS Code.</textarea>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-label small fw-bold">Attachment (Optional)</label>
+                                    <input type="file" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2">Save Changes</button>
                     </form>
                 </div>
             </div>
@@ -157,6 +224,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/role-switcher.js"></script>
+    <script>
+        document.addEventListener('change', function(e) {
+            if(e.target.classList.contains('modal-assignment-toggle')) {
+                const fields = e.target.closest('.border-top').querySelector('.assignment-fields');
+                if(e.target.checked) {
+                    fields.classList.remove('d-none');
+                } else {
+                    fields.classList.add('d-none');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 

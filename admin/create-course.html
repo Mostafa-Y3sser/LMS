@@ -81,6 +81,7 @@
                     <h2 class="h4 mb-0">Create New Course</h2>
                 </div>
                 <div class="d-flex gap-2">
+                    <a href="course-detail.html" class="btn btn-outline-secondary"><i class="bi bi-eye me-2"></i>Preview</a>
                     <button class="btn btn-light" id="btn-save-draft">Save as Draft</button>
                     <button class="btn btn-primary" id="btn-publish">Publish Course</button>
                 </div>
@@ -95,9 +96,6 @@
                         <li class="nav-item">
                             <button class="nav-link py-3 fw-bold" data-bs-toggle="tab" data-bs-target="#curriculum">2. Curriculum</button>
                         </li>
-                        <li class="nav-item">
-                            <button class="nav-link py-3 fw-bold" data-bs-toggle="tab" data-bs-target="#pricing">3. Pricing & Media</button>
-                        </li>
                     </ul>
                 </div>
                 <div class="card-body p-4 p-md-5">
@@ -111,31 +109,51 @@
                                         <input type="text" class="form-control form-control-lg" placeholder="e.g. Advanced Photography Masterclass">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label fw-bold">Short Description</label>
-                                        <textarea class="form-control" rows="3" placeholder="A brief catchline for the course..."></textarea>
-                                    </div>
-                                    <div class="mb-4">
                                         <label class="form-label fw-bold">Full Description</label>
-                                        <div class="border rounded-3 p-3" style="min-height: 200px; background-color: #fcfcfc;">
-                                            <p class="text-muted small">Rich Text Editor Placeholder...</p>
+                                        <div class="border rounded bg-white">
+                                            <div class="bg-light border-bottom p-2 d-flex gap-2 flex-wrap">
+                                                <div class="btn-group btn-group-sm">
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark fw-bold">B</button>
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark fst-italic">I</button>
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark text-decoration-underline">U</button>
+                                                </div>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ul"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ol"></i></button>
+                                                </div>
+                                                <div class="btn-group btn-group-sm">
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-image"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-link-45deg"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-code-slash"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="p-3 editor-content" contenteditable="true" style="min-height: 200px; outline: none;">
+                                                <p class="text-muted mb-0">Write your course description here...</p>
+                                            </div>
+                                            <div class="bg-light border-top p-2 d-flex justify-content-between text-muted" style="font-size: 0.75rem;">
+                                                <span>Last saved: Just now</span>
+                                                <span>Words: 0</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-4">
-                                        <label class="form-label fw-bold">Category</label>
-                                        <select class="form-select">
-                                            <option>Development</option>
-                                            <option>Design</option>
-                                            <option>Business</option>
-                                        </select>
+                                        <label class="form-label fw-bold">Course Price ($)</label>
+                                        <input type="number" class="form-control" placeholder="0.00">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label fw-bold">Language</label>
-                                        <select class="form-select">
-                                            <option>English</option>
-                                            <option>Arabic</option>
-                                        </select>
+                                        <label class="form-label fw-bold">Course Thumbnail</label>
+                                        <div class="border-dashed p-4 text-center rounded-3 bg-light" id="thumbnail-dropzone" style="cursor: pointer; transition: all 0.3s ease;">
+                                            <input type="file" id="thumbnail-input" class="d-none" accept="image/*">
+                                            <div id="thumbnail-preview-container" class="d-none mb-3">
+                                                <img id="thumbnail-preview" src="" alt="Thumbnail Preview" class="img-fluid rounded shadow-sm" style="max-height: 150px;">
+                                            </div>
+                                            <div id="upload-prompt">
+                                                <i class="bi bi-image fs-1 text-muted"></i>
+                                                <p class="mt-2 mb-0">Click to upload image</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,46 +171,100 @@
                                         <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </div>
                                     <div class="list-group shadow-sm mb-3">
-                                        <div class="list-group-item d-flex align-items-center">
-                                            <i class="bi bi-grip-vertical me-2 text-muted"></i>
-                                            <span class="flex-grow-1">1.1 Welcome to the Course</span>
-                                            <button class="btn btn-link btn-sm text-muted"><i class="bi bi-pencil"></i></button>
+                                        <div class="list-group-item flex-column align-items-start animate-fade-in p-3">
+                                            <div class="d-flex align-items-center w-100">
+                                                <i class="bi bi-grip-vertical me-2 text-muted"></i>
+                                                <span class="flex-grow-1 fw-medium">1.1 <input type="text" class="form-control d-inline-block w-75 border-0 bg-transparent p-0 ms-1 fw-medium" value="Welcome to the Course"></span>
+                                                <div class="d-flex gap-2">
+                                                    <button class="btn btn-sm btn-light toggle-lesson-details" data-bs-toggle="collapse" data-bs-target="#lesson-1-1-details" aria-expanded="false"><i class="bi bi-chevron-down"></i></button>
+                                                    <button class="btn btn-sm btn-light text-danger remove-lesson"><i class="bi bi-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="collapse mt-3" id="lesson-1-1-details">
+                                                <div class="card card-body bg-light border-0 p-3">
+                                                    <div class="row g-3">
+                                                        <div class="col-md-4">
+                                                            <label class="form-label small fw-bold">Content Type</label>
+                                                            <select class="form-select form-select-sm lesson-type-select">
+                                                                <option value="video" selected>Video</option>
+                                                                <option value="article">Article</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-8 video-input-group">
+                                                            <label class="form-label small fw-bold">Video URL</label>
+                                                            <input type="text" class="form-control form-control-sm" placeholder="https://youtube.com/..." value="https://youtube.com/watch?v=dQw4w9WgXcQ">
+                                                        </div>
+                                                        <div class="col-md-12 article-input-group d-none">
+                                                            <label class="form-label small fw-bold">Article Content</label>
+                                                            <div class="border rounded bg-white">
+                                                                <div class="bg-light border-bottom p-2 d-flex gap-2 flex-wrap">
+                                                                    <div class="btn-group btn-group-sm">
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark fw-bold">B</button>
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark fst-italic">I</button>
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark text-decoration-underline">U</button>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-sm">
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ul"></i></button>
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ol"></i></button>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-sm">
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-image"></i></button>
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-link-45deg"></i></button>
+                                                                        <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-code-slash"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="p-3 editor-content" contenteditable="true" style="min-height: 200px; outline: none;">
+                                                                    <p class="text-muted mb-0">Write your lesson content here...</p>
+                                                                </div>
+                                                                <div class="bg-light border-top p-2 d-flex justify-content-between text-muted" style="font-size: 0.75rem;">
+                                                                    <span>Last saved: Just now</span>
+                                                                    <span>Words: 0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="form-label small fw-bold">Additional Resources (Optional)</label>
+                                                            <input type="file" class="form-control form-control-sm" multiple>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-outline-primary btn-sm w-100 border-dashed"><i class="bi bi-plus-lg"></i> Add Lesson</button>
+                                    <button class="btn btn-outline-primary btn-sm w-100 border-dashed add-lesson-btn mb-3"><i class="bi bi-plus-lg"></i> Add Lesson</button>
+                                    
+                                    <!-- Module Assignment Section -->
+                                    <div class="card card-body bg-white border-0 shadow-sm mt-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="fw-bold mb-0"><i class="bi bi-file-earmark-text text-warning me-2"></i>Module Assignment</h6>
+                                            <div class="form-check form-switch mb-0">
+                                                <input class="form-check-input toggle-assignment" type="checkbox" id="hasAssignment-1">
+                                                <label class="form-check-label small" for="hasAssignment-1">Enable</label>
+                                            </div>
+                                        </div>
+                                        <div class="assignment-details d-none mt-3 pt-3 border-top">
+                                            <div class="row g-3">
+                                                <div class="col-md-12">
+                                                    <label class="form-label small fw-bold">Assignment Title</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="e.g. Module 1 Final Project">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="form-label small fw-bold">Instructions</label>
+                                                    <textarea class="form-control form-control-sm" rows="2" placeholder="Describe the requirements..."></textarea>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="form-label small fw-bold">Attachment File</label>
+                                                    <input type="file" class="form-control form-control-sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <button class="btn btn-primary" id="add-module-btn"><i class="bi bi-plus-circle me-2"></i> Add Module</button>
                             </div>
                             <div class="d-flex justify-content-between mt-5">
                                 <button class="btn btn-light px-5 py-2 prev-tab" data-prev="#basic-info"><i class="bi bi-arrow-left me-2"></i> Back</button>
-                                <button class="btn btn-primary px-5 py-2 next-tab" data-next="#pricing">Next: Pricing & Media <i class="bi bi-arrow-right ms-2"></i></button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Pricing & Media -->
-                        <div class="tab-pane fade" id="pricing">
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold">Course Price ($)</label>
-                                    <input type="number" class="form-control" placeholder="0.00">
-                                </div>
-                                <div class="col-md-12">
-                                    <label class="form-label fw-bold">Course Thumbnail</label>
-                                    <div class="border-dashed p-5 text-center rounded-3 bg-light" id="thumbnail-dropzone" style="cursor: pointer; transition: all 0.3s ease;">
-                                        <input type="file" id="thumbnail-input" class="d-none" accept="image/*">
-                                        <div id="thumbnail-preview-container" class="d-none mb-3">
-                                            <img id="thumbnail-preview" src="" alt="Thumbnail Preview" class="img-fluid rounded shadow-sm" style="max-height: 200px;">
-                                        </div>
-                                        <div id="upload-prompt">
-                                            <i class="bi bi-image fs-1 text-muted"></i>
-                                            <p class="mt-2 mb-0">Click to upload or drag image</p>
-                                            <p class="small text-muted">Recommended: 1200x800px</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-5">
-                                <button class="btn btn-light px-5 py-2 prev-tab" data-prev="#curriculum"><i class="bi bi-arrow-left me-2"></i> Back</button>
                                 <button class="btn btn-success px-5 py-2" id="btn-finish-publish">Finish & Publish <i class="bi bi-check-lg ms-2"></i></button>
                             </div>
                         </div>
