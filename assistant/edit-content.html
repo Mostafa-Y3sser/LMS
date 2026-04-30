@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Submissions - LMS Platform</title>
+    <title>Edit Content - Assistant</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -126,12 +126,12 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="submissions.html" class="menu-link active">
+                    <a href="submissions.html" class="menu-link">
                         <i class="bi bi-file-earmark-text"></i> Submissions
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="courses.html" class="menu-link">
+                    <a href="courses.html" class="menu-link active">
                         <i class="bi bi-collection-play"></i> Courses
                     </a>
                 </li>
@@ -155,78 +155,45 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
-                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">All Submissions</h1>
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Edit Content Content</h1>
             </div>
-            <!-- Filters -->
-            <div class="card p-3 mb-4 animate-fade-in">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" placeholder="Search student or ID...">
+            <div class="card border-0 shadow-sm animate-fade-in">
+                <div class="card-body p-0">
+                    <!-- Editor Toolbar Placeholder -->
+                    <div class="bg-light border-bottom p-2 d-flex gap-2 flex-wrap">
+                        <div class="btn-group">
+                            <button class="btn btn-white border btn-sm fw-bold">B</button>
+                            <button class="btn btn-white border btn-sm font-italic">I</button>
+                            <button class="btn btn-white border btn-sm text-decoration-underline">U</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-white border btn-sm"><i class="bi bi-list-ul"></i></button>
+                            <button class="btn btn-white border btn-sm"><i class="bi bi-list-ol"></i></button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-white border btn-sm"><i class="bi bi-image"></i></button>
+                            <button class="btn btn-white border btn-sm"><i class="bi bi-link-45deg"></i></button>
+                            <button class="btn btn-white border btn-sm"><i class="bi bi-code-slash"></i></button>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>All Courses</option>
-                            <option>Web Development</option>
-                            <option>UI/UX Design</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-select">
-                            <option selected>Status: All</option>
-                            <option>Pending</option>
-                            <option>Graded</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary w-100">Filter</button>
+                    <!-- Editor Area -->
+                    <div class="p-4 p-md-5" style="min-height: 500px; outline: none;" contenteditable="true">
+                        <h3 class="h4 mb-3">Content Overview</h3>
+                        <p>In this content, we will cover the importance of semantic HTML tags and how they help both browsers and search engines understand the structure of your content. Semantic HTML isn't just about accessibility; it's about building a solid foundation for your web applications.</p>
+                        
+                        <h4 class="h5 mt-4 mb-3">Key Tags Covered:</h4>
+                        <ul>
+                            <li><code>&lt;header&gt;</code> - Defines a header for a document or a section</li>
+                            <li><code>&lt;nav&gt;</code> - Defines a set of navigation links</li>
+                        </ul>
                     </div>
                 </div>
+                <div class="card-footer bg-white border-top p-3 text-muted small d-flex justify-content-between">
+                    <span>Last saved: Today at 03:45 PM</span>
+                    <span>Words: 124</span>
+                </div>
             </div>
-
-            <!-- Submissions Table -->
-            <div class="card animate-fade-in">
-                <div class="card-body p-0"><div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead style="background-color: var(--bg-color);">
-                            <tr>
-                                <th class="px-4 py-3 fw-semibold text-muted small text-uppercase">Student</th>
-                                <th class="py-3 fw-semibold text-muted small text-uppercase">Assignment</th>
-                                <th class="py-3 fw-semibold text-muted small text-uppercase">Submitted</th>
-                                <th class="py-3 fw-semibold text-muted small text-uppercase">Status</th>
-                                <th class="py-3 text-end pe-4 fw-semibold text-muted small text-uppercase">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="ps-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-avatar-sm me-2">MC</div>
-                                        <span>Maya Chen</span>
-                                    </div>
-                                </td>
-                                <td>Module 2 Project</td>
-                                <td class="small">Apr 24, 2026</td>
-                                <td><span class="badge bg-warning-subtle text-warning rounded-pill">Pending</span></td>
-                                <td class="text-end pe-4">
-                                    <a href="grade-submission.html" class="btn btn-primary btn-sm">Grade</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ps-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-avatar-sm me-2 bg-info text-white">MK</div>
-                                        <span>Michael Kane</span>
-                                    </div>
-                                </td>
-                                <td>Basic HTML Page</td>
-                                <td class="small">Apr 22, 2026</td>
-                                <td><span class="badge bg-success-subtle text-success rounded-pill">Graded</span></td>
-                                <td class="text-end pe-4">
-                                    <button class="btn btn-light btn-sm">View Grade</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table></div></div></div></main>
+        </main>
     </div>
 
     </div>

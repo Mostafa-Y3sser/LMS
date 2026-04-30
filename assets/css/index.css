@@ -1,105 +1,229 @@
 /* index.css - Core Design Tokens */
 
 :root {
-    /* Colors */
-    --primary-color: #0f172a;
-    --primary-light: #1e293b;
-    --secondary-color: #3b82f6;
-    --secondary-light: #eff6ff;
-    --accent-color: #10b981;
-    --accent-light: #ecfdf5;
-    --bg-color: #f8fafc;
-    --surface-color: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #64748b;
-    --text-muted: #94a3b8;
-    --border-color: #e2e8f0;
-    --error-color: #ef4444;
-    --warning-color: #f59e0b;
-    
+    /* Core Colors — calm, minimal blue palette */
+    --primary-color: #1a2b4a;       /* Deep navy — used sparingly for text & brand */
+    --primary-light: #2d4272;       /* Mid navy — hover states */
+    --accent-color: #3b7dd8;        /* Soft blue — interactive elements */
+    --accent-light: #eef4fd;        /* Tinted blue — icon backgrounds, tags */
+    --accent-hover: #2f6bbf;        /* Slightly deeper blue — button hover */
+
+    /* Status Colors — muted tones */
+    --success-color: #34a87a;
+    --success-light: #edfbf5;
+    --warning-color: #d97706;
+    --warning-light: #fffbeb;
+    --error-color: #c0392b;
+    --error-light: #fef2f2;
+
+    /* Surfaces & Backgrounds */
+    --bg-color: #f4f6f9;            /* Very light cool gray page bg */
+    --surface-color: #ffffff;       /* Pure white — cards, panels */
+    --surface-dim: #eef0f3;         /* Subtle hover / alternate rows */
+    --overlay-color: rgba(26, 43, 74, 0.7);
+
+    /* Text */
+    --text-primary: #1a2b4a;        /* Dark navy for headings */
+    --text-secondary: #6b7280;      /* Neutral gray for body */
+    --text-muted: #9ca3af;          /* Lighter muted for timestamps */
+
+    /* Borders */
+    --border-color: #e5e7eb;        /* Very light border */
+    --border-focus: #3b7dd8;
+
     /* Typography */
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-heading: 'Nunito', sans-serif;
-    
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    
-    /* Border Radius */
-    --radius-sm: 0.375rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
-    
+    --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Shadows — lighter & softer */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+    --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+    --shadow-lg: 0 8px 24px -4px rgb(0 0 0 / 0.1);
+
+    /* Layout */
+    --radius-sm: 6px;
+    --radius-base: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-pill: 9999px;
+
     /* Transitions */
-    --transition-base: all 0.2s ease-in-out;
+    --transition-base: all 0.18s ease;
 }
 
-/* Base Overrides */
+/* ── Base ─────────────────────────────────────────── */
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
-    color: var(--text-primary);
+    color: var(--text-secondary);
     line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
+h1, .h1 { font-size: 2rem;   font-weight: 700; }
+h2, .h2 { font-size: 1.5rem; font-weight: 700; }
+h3, .h3 { font-size: 1.2rem; }
+h4, .h4 { font-size: 1.05rem; }
+
+.display-1, .display-2, .display-3,
+.display-4, .display-5, .display-6 {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+}
+
+small, .small {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.text-secondary { color: var(--text-secondary) !important; }
+.text-muted     { color: var(--text-muted)     !important; }
+
+/* ── Links ────────────────────────────────────────── */
 a {
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--accent-color);
     transition: var(--transition-base);
 }
+a:hover { color: var(--accent-hover); }
 
-a:hover {
-    color: var(--primary-color);
-}
-
-/* Bootstrap Overrides */
+/* ── Buttons ──────────────────────────────────────── */
 .btn {
-    font-weight: 600;
-    padding: 0.6rem 1.5rem;
-    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-base);
     transition: var(--transition-base);
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
 }
-
 .btn-primary:hover {
-    background-color: var(--primary-light);
-    border-color: var(--primary-light);
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background-color: var(--surface-dim);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+.btn-secondary:hover {
+    background-color: var(--border-color);
+    border-color: var(--border-color);
+    color: var(--text-primary);
 }
 
 .btn-outline-primary {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: transparent;
 }
-
 .btn-outline-primary:hover {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
     color: #fff;
 }
 
+.btn-light {
+    background-color: var(--surface-dim);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+.btn-light:hover {
+    background-color: var(--border-color);
+}
+
+/* ── Badges ───────────────────────────────────────── */
+.badge {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    border-radius: var(--radius-sm);
+}
+
+/* ── Cards ────────────────────────────────────────── */
 .card {
     border: none;
     border-radius: var(--radius-lg);
+    background-color: var(--surface-color);
     box-shadow: var(--shadow-sm);
     transition: var(--transition-base);
 }
-
 .card:hover {
     box-shadow: var(--shadow-md);
+}
+
+/* ── Form Controls ────────────────────────────────── */
+.form-control, .form-select {
+    border-radius: var(--radius-base);
+    border: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    transition: var(--transition-base);
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(59, 125, 216, 0.12);
+    outline: none;
+}
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+
+
+/* Status Background & Text Utilities */
+.bg-primary-light { background-color: var(--primary-light) !important; }
+.text-primary { color: var(--primary-color) !important; }
+
+.bg-accent-light { background-color: var(--accent-light) !important; }
+.text-accent { color: var(--accent-color) !important; }
+
+.bg-success-light, .bg-success-subtle { background-color: var(--success-light) !important; }
+.text-success { color: var(--success-color) !important; }
+
+.bg-warning-light, .bg-warning-subtle { background-color: var(--warning-light) !important; }
+.text-warning { color: var(--warning-color) !important; }
+
+.bg-error-light, .bg-danger-light, .bg-danger-subtle { background-color: var(--error-light) !important; }
+.text-error, .text-danger { color: var(--error-color) !important; }
+
+/* -- Tables ----------------------------------------- */
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+.table th {
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom-width: 1px;
+}
+.table td {
+    border-bottom-color: var(--border-color);
+}
+.table-hover tbody tr:hover {
+    background-color: var(--surface-dim);
 }

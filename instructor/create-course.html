@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Course - Instructor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <style>
+        .tab-step { display:none; }
+        .tab-step.active { display:block; }
+        .step-nav .step-btn { padding:0.75rem 1.5rem; font-size:13px; font-weight:600; color:var(--text-muted); border:none; background:none; border-bottom:2px solid transparent; cursor:pointer; transition:.2s; }
+        .step-nav .step-btn.active { color:var(--accent-color); border-bottom-color:var(--accent-color); }
+        .step-nav { border-bottom:1px solid var(--border-color); display:flex; }
+        .content-item { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; background:var(--surface-color); border:1px solid var(--border-color); border-radius:8px; margin-bottom:0.5rem; }
+        .content-type-badge { font-size:11px; font-weight:700; letter-spacing:0.04em; padding:2px 8px; border-radius:20px; }
+        .badge-video { background:#ede9fe; color:#6d28d9; }
+        .badge-link  { background:#e0f2fe; color:#0369a1; }
+        .badge-text  { background:#fef9c3; color:#92400e; }
+        .thumbnail-zone { border:2px dashed var(--border-color); border-radius:10px; padding:2.5rem; text-align:center; cursor:pointer; transition:.2s; background:var(--bg-color); }
+        .thumbnail-zone:hover { border-color:var(--accent-color); background:var(--accent-light); }
+        .content-type-card { border:2px solid var(--border-color); border-radius:10px; padding:1.25rem; cursor:pointer; transition:.2s; text-align:center; }
+        .content-type-card:hover, .content-type-card.selected { border-color:var(--accent-color); background:var(--accent-light); }
+        .rich-editor { min-height:200px; border:1px solid var(--border-color); border-radius:8px; padding:1rem; outline:none; font-size:14px; line-height:1.7; }
+        .editor-toolbar { border:1px solid var(--border-color); border-bottom:none; border-radius:8px 8px 0 0; padding:0.4rem 0.75rem; background:var(--bg-color); display:flex; gap:4px; flex-wrap:wrap; }
+        .editor-toolbar button { border:none; background:none; padding:4px 8px; border-radius:5px; font-size:13px; cursor:pointer; color:var(--text-secondary); }
+        .editor-toolbar button:hover { background:var(--surface-dim); }
+        .rich-editor { border-radius:0 0 8px 8px; }
+        .module-card { background:var(--surface-color); border:1px solid var(--border-color); border-radius:10px; padding:1.25rem; margin-bottom:1rem; }
+    </style>
+</head>
+<body>
+
+        <!-- Global Dashboard Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-public sticky-top" style="z-index: 1040;">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-3" id="sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                    <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
+                </a>
+            </div>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-light position-relative rounded-circle p-2" type="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">3</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-0" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                            <li class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light sticky-top">
+                                <span class="fw-bold" style="font-size: 14px;">Notifications</span>
+                                <span class="badge bg-danger rounded-pill" style="font-size: 10px;">3 New</span>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-megaphone"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">New Course Launched!</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Advanced AI & Machine Learning course is now available for enrollment.</p>
+                                            <span class="text-muted" style="font-size: 10px;">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Assignment Graded</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your Module 2 project has been graded. Score: 85/100.</p>
+                                            <span class="text-muted" style="font-size: 10px;">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-credit-card"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1" style="font-size: 13px;">Payment Successful</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your payment for "Full-Stack Web Development" was successful.</p>
+                                            <span class="text-muted" style="font-size: 10px;">Yesterday</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="bg-light sticky-bottom border-top">
+                                <div class="text-center py-2">
+                                    <a class="text-decoration-none text-primary" style="font-size: 12px; font-weight: 600;" href="#">Mark all as read</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 p-1 pe-3 border-0 bg-transparent" type="button" data-bs-toggle="dropdown">
+                            <div class="user-avatar-sm" style="width: 32px; height: 32px;">AK</div>
+                            <div class="text-start d-none d-md-block">
+                                <div class="fw-bold small" style="line-height: 1; color: var(--text-primary);">Alex King</div>
+                                <div class="text-muted" style="font-size: 0.7rem;">Instructor</div>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" href="../login.html"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+    <!-- Sidebar -->
+            <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html" class="menu-link ">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#usersSubmenu" data-bs-toggle="collapse" class="menu-link d-flex align-items-center w-100 ">
+                        <i class="bi bi-people"></i> Users <i class="bi bi-chevron-down ms-auto" style="font-size: 0.8rem;"></i>
+                    </a>
+                    <ul class="collapse list-unstyled " id="usersSubmenu">
+                        <li class="menu-item mt-1">
+                            <a href="users.html" class="menu-link py-2 " style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-people"></i> All Users
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="create-assistant.html" class="menu-link py-2 " style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-person-plus"></i> Create Assistant
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#coursesSubmenu" data-bs-toggle="collapse" class="menu-link d-flex align-items-center w-100 active">
+                        <i class="bi bi-book"></i> Courses <i class="bi bi-chevron-down ms-auto" style="font-size: 0.8rem;"></i>
+                    </a>
+                    <ul class="collapse list-unstyled show" id="coursesSubmenu">
+                        <li class="menu-item mt-1">
+                            <a href="courses.html" class="menu-link py-2 " style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-grid"></i> All Courses
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="create-course.html" class="menu-link py-2 active" style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-plus-circle"></i> Create New Course
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="submissions.html" class="menu-link ">
+                        <i class="bi bi-file-earmark-check"></i> Submissions
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="payments.html" class="menu-link ">
+                        <i class="bi bi-credit-card"></i> Payments
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="profile.html" class="menu-link ">
+                        <i class="bi bi-gear"></i> Settings
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="user-info-brief">
+                    <div class="user-avatar-sm">AK</div>
+                    <div class="small">
+                        <div class="fw-bold">Alex King</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    <main class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Create New Course</h1>
+            </div>
+        <div class="animate-fade-in">
+            <div class="card">
+                <!-- Step nav -->
+                <div class="step-nav px-2">
+                    <button class="step-btn active" onclick="goStep(0, this)">1 · Basic Info</button>
+                    <button class="step-btn" onclick="goStep(1, this)">2 · Curriculum</button>
+                </div>
+
+                <div class="p-4 p-md-5">
+
+                    <!-- ── Step 1: Basic Info (merged with Pricing) ── -->
+                    <div class="tab-step active" id="step-0">
+                        <div class="row g-4">
+                            <div class="col-lg-8">
+                                <div class="mb-4">
+                                    <label class="form-label">Course Title</label>
+                                    <input type="text" class="form-control" placeholder="e.g. Advanced Photography Masterclass">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Short Description</label>
+                                    <textarea class="form-control" rows="2" placeholder="A brief catchline for the course…"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Full Description</label>
+                                    <div class="editor-toolbar">
+                                        <button onclick="fmt('bold')" title="Bold"><b>B</b></button>
+                                        <button onclick="fmt('italic')" title="Italic"><i>I</i></button>
+                                        <button onclick="fmt('underline')" title="Underline"><u>U</u></button>
+                                        <button onclick="fmt('insertUnorderedList')" title="List"><i class="bi bi-list-ul"></i></button>
+                                        <button onclick="fmt('insertOrderedList')" title="Numbered"><i class="bi bi-list-ol"></i></button>
+                                    </div>
+                                    <div class="rich-editor" id="desc-editor" contenteditable="true">
+                                        <p style="color:var(--text-muted);font-size:13px">Write a detailed course description…</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+
+
+                                <div class="mb-4">
+                                    <label class="form-label">Price ($)</label>
+                                    <input type="number" class="form-control" placeholder="0.00 for free">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Course Thumbnail</label>
+                                    <div class="thumbnail-zone" id="thumbnail-zone" onclick="document.getElementById('thumb-input').click()">
+                                        <input type="file" id="thumb-input" class="d-none" accept="image/*" onchange="previewThumb(this)">
+                                        <div id="thumb-prompt">
+                                            <i class="bi bi-image" style="font-size:2rem;color:var(--text-muted)"></i>
+                                            <p class="mb-0 mt-2" style="font-size:13px;color:var(--text-muted)">Click to upload thumbnail</p>
+                                            <p class="mb-0" style="font-size:11px;color:var(--text-muted)">Recommended: 1200×800px</p>
+                                        </div>
+                                        <img id="thumb-preview" class="img-fluid rounded d-none" style="max-height:160px" alt="preview">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button class="btn btn-primary" onclick="goStep(1, document.querySelectorAll('.step-btn')[1])">
+                                Next: Curriculum <i class="bi bi-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ── Step 2: Curriculum ── -->
+                    <div class="tab-step" id="step-1">
+                        <div id="curriculum-builder">
+                            <!-- Module 1 sample -->
+                            <div class="module-card" id="module-1">
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="bi bi-grip-vertical text-muted"></i>
+                                    <input type="text" class="form-control form-control-sm fw-semibold" value="Module 1: Introduction" style="max-width:320px">
+                                    <button class="btn btn-light btn-sm ms-auto text-danger" onclick="this.closest('.module-card').remove()"><i class="bi bi-trash"></i></button>
+                                </div>
+                                <div class="content-list mb-3" id="content-list-1">
+                                    <div class="content-item">
+                                        <i class="bi bi-grip-vertical text-muted" style="font-size:12px"></i>
+                                        <span class="content-type-badge badge-video">VIDEO</span>
+                                        <span style="font-size:14px;flex:1">1.1 Welcome to the Course</span>
+                                        <button class="btn btn-light btn-sm"><i class="bi bi-pencil"></i></button>
+                                        <button class="btn btn-light btn-sm text-danger"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-light btn-sm w-100" style="border-style:dashed" onclick="openContentModal('content-list-1')">
+                                    <i class="bi bi-plus-lg me-1"></i> Add Content
+                                </button>
+                            </div>
+                        </div>
+                        <button class="btn btn-light btn-sm mt-1" id="add-module-btn">
+                            <i class="bi bi-plus-circle me-1"></i> Add Module
+                        </button>
+
+                        <div class="d-flex justify-content-between mt-5">
+                            <button class="btn btn-light" onclick="goStep(0, document.querySelectorAll('.step-btn')[0])">
+                                <i class="bi bi-arrow-left me-1"></i> Back
+                            </button>
+                            <button class="btn btn-primary px-4" id="btn-finish">
+                                Finish &amp; Publish <i class="bi bi-check-lg ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div><!-- /card body -->
+            </div><!-- /card -->
+        </div>
+    </main>
+</div>
+
+<!-- ─── Add Content Modal ─── -->
+<div class="modal fade" id="contentModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:560px">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" style="font-size:16px">Add Content</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body pt-3">
+                <!-- Type picker -->
+                <div id="type-picker">
+                    <p class="text-muted mb-3" style="font-size:13px">Choose what type of content to add:</p>
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <div class="content-type-card" onclick="selectType('video')">
+                                <i class="bi bi-play-circle" style="font-size:1.8rem;color:#6d28d9"></i>
+                                <div class="fw-semibold mt-2" style="font-size:13px">Video URL</div>
+                                <div class="text-muted" style="font-size:11px">YouTube / Vimeo</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="content-type-card" onclick="selectType('link')">
+                                <i class="bi bi-link-45deg" style="font-size:1.8rem;color:#0369a1"></i>
+                                <div class="fw-semibold mt-2" style="font-size:13px">Link</div>
+                                <div class="text-muted" style="font-size:11px">External resource</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="content-type-card" onclick="selectType('text')">
+                                <i class="bi bi-file-text" style="font-size:1.8rem;color:#92400e"></i>
+                                <div class="fw-semibold mt-2" style="font-size:13px">Text</div>
+                                <div class="text-muted" style="font-size:11px">Rich text content</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video form -->
+                <div id="form-video" class="d-none">
+                    <button class="btn btn-light btn-sm mb-3" onclick="backToPicker()"><i class="bi bi-arrow-left me-1"></i> Back</button>
+                    <label class="form-label">Content Title</label>
+                    <input type="text" class="form-control mb-3" id="video-title" placeholder="e.g. Intro to the Course">
+                    <label class="form-label">Video URL</label>
+                    <input type="url" class="form-control mb-1" id="video-url" placeholder="https://youtube.com/watch?v=...">
+                    <p class="text-muted" style="font-size:12px">Supports YouTube, Vimeo, or direct MP4 links.</p>
+                </div>
+
+                <!-- Link form -->
+                <div id="form-link" class="d-none">
+                    <button class="btn btn-light btn-sm mb-3" onclick="backToPicker()"><i class="bi bi-arrow-left me-1"></i> Back</button>
+                    <label class="form-label">Content Title</label>
+                    <input type="text" class="form-control mb-3" id="link-title" placeholder="e.g. Official Docs">
+                    <label class="form-label">URL</label>
+                    <input type="url" class="form-control" id="link-url" placeholder="https://...">
+                </div>
+
+                <!-- Text form -->
+                <div id="form-text" class="d-none">
+                    <button class="btn btn-light btn-sm mb-3" onclick="backToPicker()"><i class="bi bi-arrow-left me-1"></i> Back</button>
+                    <label class="form-label">Content Title</label>
+                    <input type="text" class="form-control mb-3" id="text-title" placeholder="e.g. Content Notes">
+                    <label class="form-label">Content</label>
+                    <div class="editor-toolbar">
+                        <button onclick="fmt2('bold')"><b>B</b></button>
+                        <button onclick="fmt2('italic')"><i>I</i></button>
+                        <button onclick="fmt2('underline')"><u>U</u></button>
+                        <button onclick="fmt2('insertUnorderedList')"><i class="bi bi-list-ul"></i></button>
+                        <button onclick="fmt2('insertOrderedList')"><i class="bi bi-list-ol"></i></button>
+                        <button onclick="fmt2('formatBlock', 'h3')" style="font-size:11px">H3</button>
+                    </div>
+                    <div class="rich-editor" id="text-editor" contenteditable="true" style="min-height:160px">
+                        <p style="color:var(--text-muted);font-size:13px">Start typing your content…</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0 pt-0" id="modal-footer" style="display:none!important">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btn-add-content">Add Content</button>
+            </div>
+            <div class="modal-footer border-0 pt-0" id="modal-footer-type">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/role-switcher.js"></script>
+<script>
+    /* ── Step navigation ── */
+    function goStep(idx, btn) {
+        document.querySelectorAll('.tab-step').forEach((s,i) => s.classList.toggle('active', i===idx));
+        document.querySelectorAll('.step-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    /* ── Description editor toolbar ── */
+    function fmt(cmd, val) { document.getElementById('desc-editor').focus(); document.execCommand(cmd, false, val||null); }
+    function fmt2(cmd, val) { document.getElementById('text-editor').focus(); document.execCommand(cmd, false, val||null); }
+
+    /* ── Thumbnail preview ── */
+    function previewThumb(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        document.getElementById('thumb-prompt').classList.add('d-none');
+        const img = document.getElementById('thumb-preview');
+        img.src = url; img.classList.remove('d-none');
+    }
+
+    /* ── Add Module ── */
+    let modCount = 2;
+    document.getElementById('add-module-btn').addEventListener('click', () => {
+        const id = 'module-' + modCount;
+        const listId = 'content-list-' + modCount;
+        const div = document.createElement('div');
+        div.className = 'module-card'; div.id = id;
+        div.innerHTML = `
+            <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-grip-vertical text-muted"></i>
+                <input type="text" class="form-control form-control-sm fw-semibold" value="Module ${modCount}: New Module" style="max-width:320px">
+                <button class="btn btn-light btn-sm ms-auto text-danger" onclick="this.closest('.module-card').remove()"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="content-list mb-3" id="${listId}"></div>
+            <button class="btn btn-light btn-sm w-100" style="border-style:dashed" onclick="openContentModal('${listId}')">
+                <i class="bi bi-plus-lg me-1"></i> Add Content
+            </button>`;
+        document.getElementById('curriculum-builder').insertBefore(div, document.getElementById('add-module-btn'));
+        modCount++;
+    });
+
+    /* ── Content Modal ── */
+    let activeListId = null;
+    let currentType = null;
+    const modal = new bootstrap.Modal(document.getElementById('contentModal'));
+
+    function openContentModal(listId) {
+        activeListId = listId;
+        backToPicker();
+        modal.show();
+    }
+
+    function selectType(type) {
+        currentType = type;
+        document.getElementById('type-picker').classList.add('d-none');
+        document.getElementById('form-video').classList.toggle('d-none', type !== 'video');
+        document.getElementById('form-link').classList.toggle('d-none', type !== 'link');
+        document.getElementById('form-text').classList.toggle('d-none', type !== 'text');
+        document.getElementById('modal-footer').style.display = 'flex';
+        document.getElementById('modal-footer-type').style.display = 'none';
+        // Highlight card
+        document.querySelectorAll('.content-type-card').forEach(c => c.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+    }
+
+    function backToPicker() {
+        currentType = null;
+        document.getElementById('type-picker').classList.remove('d-none');
+        document.getElementById('form-video').classList.add('d-none');
+        document.getElementById('form-link').classList.add('d-none');
+        document.getElementById('form-text').classList.add('d-none');
+        document.getElementById('modal-footer').style.display = 'none';
+        document.getElementById('modal-footer-type').style.display = 'flex';
+    }
+
+    document.getElementById('btn-add-content').addEventListener('click', () => {
+        if (!currentType || !activeListId) return;
+        let title = '', badge = '', badgeClass = '';
+        if (currentType === 'video') {
+            title = document.getElementById('video-title').value || 'Video Content';
+            badge = 'VIDEO'; badgeClass = 'badge-video';
+        } else if (currentType === 'link') {
+            title = document.getElementById('link-title').value || 'Resource Link';
+            badge = 'LINK'; badgeClass = 'badge-link';
+        } else {
+            title = document.getElementById('text-title').value || 'Text Content';
+            badge = 'TEXT'; badgeClass = 'badge-text';
+        }
+        const list = document.getElementById(activeListId);
+        const item = document.createElement('div');
+        item.className = 'content-item';
+        item.innerHTML = `
+            <i class="bi bi-grip-vertical text-muted" style="font-size:12px"></i>
+            <span class="content-type-badge ${badgeClass}">${badge}</span>
+            <span style="font-size:14px;flex:1">${title}</span>
+            <button class="btn btn-light btn-sm"><i class="bi bi-pencil"></i></button>
+            <button class="btn btn-light btn-sm text-danger" onclick="this.closest('.content-item').remove()"><i class="bi bi-trash"></i></button>`;
+        list.appendChild(item);
+        modal.hide();
+        backToPicker();
+    });
+</script>
+</body>
+</html>

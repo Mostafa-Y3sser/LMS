@@ -1,69 +1,85 @@
 /* sidebar.css - Dashboard Sidebar Styles */
 
 .sidebar {
-    width: 280px;
-    background-color: var(--primary-color);
-    color: #fff;
+    width: 260px;
+    background-color: var(--surface-color);
+    border-right: none;
+    box-shadow: var(--shadow-sm);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     transition: var(--transition-base);
-    min-height: 100vh;
+    min-height: calc(100vh - 66px); /* 66px is approx navbar height */
+    position: sticky;
+    top: 66px;
+    align-self: flex-start;
+    height: calc(100vh - 66px);
+    overflow-y: auto;
 }
 
 .sidebar-header {
-    padding: 2rem;
+    padding: 1.5rem 1.75rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 }
 
 .sidebar-logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text-primary);
     margin: 0;
+    letter-spacing: -0.02em;
 }
 
 .sidebar-menu {
     flex: 1;
-    padding: 1.5rem 0;
+    padding: 1rem 0.75rem;
     list-style: none;
     margin: 0;
 }
 
 .menu-item {
-    margin-bottom: 0.25rem;
+    margin-bottom: 2px;
 }
 
 .menu-link {
     display: flex;
     align-items: center;
-    padding: 0.75rem 2rem;
-    color: rgba(255, 255, 255, 0.7);
+    padding: 0.6rem 0.875rem;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: var(--transition-base);
     font-weight: 500;
+    font-size: 14px;
+    border-radius: var(--radius-base);
 }
 
 .menu-link i {
     width: 20px;
-    margin-right: 0.75rem;
-    font-size: 1.1rem;
+    margin-right: 0.625rem;
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 .menu-link:hover {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    background-color: var(--surface-dim);
 }
 
 .menu-link.active {
-    color: #fff;
-    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    background-color: var(--accent-light);
+    font-weight: 600;
+}
+
+.menu-link.active i {
+    opacity: 1;
 }
 
 .sidebar-footer {
-    padding: 1.5rem 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-top: none;
 }
 
 .user-info-brief {
@@ -72,29 +88,33 @@
 }
 
 .user-avatar-sm {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    margin-right: 0.75rem;
-    background-color: var(--secondary-color);
+    margin-right: 0.625rem;
+    background-color: var(--surface-dim);
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 12px;
+    flex-shrink: 0;
 }
 
 /* Mobile Sidebar Toggle */
 @media (max-width: 991.98px) {
     .sidebar {
         position: fixed;
-        left: -280px;
+        left: -260px;
         z-index: 1050;
+        box-shadow: var(--shadow-lg);
     }
-    
+
     .sidebar.active {
         left: 0;
     }
-    
+
     .main-content {
         padding: 1rem;
     }
