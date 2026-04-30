@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="role-option ${currentRole === 'guest' ? 'active' : ''}" data-role="guest" title="Browse courses as a guest">🌐 Guest</div>
                 <div class="role-option ${currentRole === 'student' ? 'active' : ''}" data-role="student" title="Access your enrolled courses">🎓 Student</div>
                 <div class="role-option ${currentRole === 'assistant' ? 'active' : ''}" data-role="assistant" title="Manage courses and submissions">🛠️ Assistant</div>
-                <div class="role-option ${currentRole === 'admin' ? 'active' : ''}" data-role="admin" title="Full admin access">👑 Admin</div>
+                <div class="role-option ${currentRole === 'instructor' ? 'active' : ''}" data-role="instructor" title="Full instructor access">👑 Instructor</div>
             </div>
             <div id="role-switcher-toggle" title="Switch Development Role">
                 <i class="bi bi-gear-fill"></i>
@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
         const isInStudentSubdir = path.includes('/student/');
         const isInAssistantSubdir = path.includes('/assistant/');
-        const isInAdminSubdir = path.includes('/admin/');
+        const isInInstructorSubdir = path.includes('/instructor/');
         
-        if (isInStudentSubdir || isInAssistantSubdir || isInAdminSubdir) {
+        if (isInStudentSubdir || isInAssistantSubdir || isInInstructorSubdir) {
             return '../';
         }
         return './';
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'guest': prefix + 'index.html',
             'student': prefix + 'student/dashboard.html',
             'assistant': prefix + 'assistant/dashboard.html',
-            'admin': prefix + 'admin/dashboard.html'
+            'instructor': prefix + 'instructor/dashboard.html'
         };
         
         return roleUrls[role] || prefix + 'index.html';
@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function applyRoleUI(role) {
     // This function can be used to hide/show elements based on role
-    const adminElements = document.querySelectorAll('.admin-only');
+    const instructorElements = document.querySelectorAll('.instructor-only');
     const studentElements = document.querySelectorAll('.student-only');
     const guestElements = document.querySelectorAll('.guest-only');
     const assistantElements = document.querySelectorAll('.assistant-only');
 
     // Show/hide based on role
-    adminElements.forEach(el => {
-        el.classList.toggle('d-none', role !== 'admin');
+    instructorElements.forEach(el => {
+        el.classList.toggle('d-none', role !== 'instructor');
     });
     
     studentElements.forEach(el => {

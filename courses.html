@@ -16,53 +16,54 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-public sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
-                <span>LMS Platform</span>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="courses.html">Browse Courses</a>
-                    </li>
+                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Browse Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <div class="d-flex align-items-center gap-2">
-                    <a href="login.html" class="btn btn-outline-primary">Login</a>
-                    <a href="register.html" class="btn btn-primary">Sign Up</a>
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                    <a href="login.html" class="btn btn-light">Log in</a>
+                    <a href="register.html" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <header class="py-5 bg-white border-bottom">
-        <div class="container text-center">
-            <h1 class="display-5 fw-bold mb-3">All <span class="text-gradient">Courses</span></h1>
-            <p class="lead text-secondary mx-auto" style="max-width: 600px;">Unlock your potential with our diverse range of professional courses designed for your career success.</p>
+    <header style="padding: 3rem 0 2rem; background: var(--surface-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-color);margin-bottom:0.5rem">Catalogue</div>
+            <h1 style="font-size:1.75rem;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:0.5rem">Browse Courses</h1>
+            <p class="text-muted mb-0" style="font-size:14px">Unlock your potential with expert-led professional courses.</p>
         </div>
     </header>
 
-    <!-- Filter & Search Section -->
-    <section class="py-4 bg-light-gray border-bottom sticky-top" style="top: 72px; z-index: 1010;">
+    <!-- Filter & Search -->
+    <section class="py-3" style="background:var(--surface-color);border-bottom:1px solid var(--border-color);position:sticky;top:57px;z-index:1010">
         <div class="container">
-            <div class="row g-3 align-items-center">
+            <div class="row g-2 align-items-center">
                 <div class="col-lg-6">
                     <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-                        <input type="text" class="form-control border-start-0" placeholder="Search for courses (e.g. Web Development)">
+                        <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-start-0" placeholder="Search courses…">
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-lg-end gap-2">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-secondary active">All</button>
-                        <button type="button" class="btn btn-outline-secondary">Free</button>
-                        <button type="button" class="btn btn-outline-secondary">Paid</button>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-light active">All</button>
+                        <button class="btn btn-light">Free</button>
+                        <button class="btn btn-light">Paid</button>
                     </div>
-                    <select class="form-select w-auto">
-                        <option selected>Newest First</option>
+                    <select class="form-select form-select-sm w-auto">
+                        <option>Newest First</option>
                         <option>Oldest First</option>
                         <option>Price: Low to High</option>
                         <option>Price: High to Low</option>
@@ -200,34 +201,29 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-top py-5">
+    <footer style="background:var(--surface-color);border-top:1px solid var(--border-color);padding:2.5rem 0 1.5rem">
         <div class="container">
-            <div class="row g-4 text-center text-lg-start">
+            <div class="row g-4 mb-3">
                 <div class="col-lg-4">
-                    <a class="navbar-brand d-flex align-items-center mb-3 justify-content-center justify-content-lg-start" href="index.html">
-                        <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
-                        <span>LMS Platform</span>
+                    <a class="d-flex align-items-center gap-2 mb-2 text-decoration-none" href="index.html">
+                        <i class="bi bi-mortarboard-fill" style="color:var(--accent-color)"></i>
+                        <span style="font-weight:700;color:var(--text-primary);font-size:0.95rem">LMS Platform</span>
                     </a>
-                    <p class="text-secondary">Empowering learners worldwide with accessible, high-quality education.</p>
+                    <p style="font-size:13px;color:var(--text-muted)">Empowering learners worldwide.</p>
                 </div>
                 <div class="col-6 col-lg-2 ms-lg-auto">
-                    <h6 class="fw-bold mb-3">Platform</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="courses.html" class="text-secondary">Browse Courses</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary">Learning Paths</a></li>
-                    </ul>
+                    <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem">Platform</div>
+                    <a href="courses.html" style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:0.4rem">Browse Courses</a>
+                    <a href="#" style="font-size:13px;color:var(--text-muted);display:block">Learning Paths</a>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h6 class="fw-bold mb-3">Company</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-secondary">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-secondary">Contact</a></li>
-                    </ul>
+                    <div style="font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem">Company</div>
+                    <a href="#" style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:0.4rem">About Us</a>
+                    <a href="contact.html" style="font-size:13px;color:var(--text-muted);display:block">Contact</a>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center text-muted small">
-                &copy; 2026 LMS Platform. All rights reserved.
+            <div style="border-top:1px solid var(--border-color);padding-top:1rem">
+                <p class="text-center mb-0" style="font-size:12px;color:var(--text-muted)">&copy; 2026 LMS Platform. All rights reserved.</p>
             </div>
         </div>
     </footer>

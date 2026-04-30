@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - LMS Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/css/index.css">
@@ -12,14 +15,131 @@
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/components.css">
 </head>
+
 <body>
+
+    <!-- Global Dashboard Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-public sticky-top" style="z-index: 1040;">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-3" id="sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                    <span
+                        style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS
+                        Platform</span>
+                </a>
+            </div>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-light position-relative rounded-circle p-2" type="button"
+                            data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="font-size: 10px;">3</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-0"
+                            style="width: 320px; max-height: 400px; overflow-y: auto;">
+                            <li
+                                class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light sticky-top">
+                                <span class="fw-bold" style="font-size: 14px;">Notifications</span>
+                                <span class="badge bg-danger rounded-pill" style="font-size: 10px;">3 New</span>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-megaphone"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">New Course Launched!</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Advanced AI &
+                                                Machine Learning course is now available for enrollment.</p>
+                                            <span class="text-muted" style="font-size: 10px;">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Assignment Graded</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your Module 2
+                                                project has been graded. Score: 85/100.</p>
+                                            <span class="text-muted" style="font-size: 10px;">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-credit-card"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1" style="font-size: 13px;">Payment Successful</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your payment for
+                                                "Full-Stack Web Development" was successful.</p>
+                                            <span class="text-muted" style="font-size: 10px;">Yesterday</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="bg-light sticky-bottom border-top">
+                                <div class="text-center py-2">
+                                    <a class="text-decoration-none text-primary"
+                                        style="font-size: 12px; font-weight: 600;" href="#">Mark all as read</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 p-1 pe-3 border-0 bg-transparent"
+                            type="button" data-bs-toggle="dropdown">
+                            <div class="user-avatar-sm" style="width: 32px; height: 32px;">MC</div>
+                            <div class="text-start d-none d-md-block">
+                                <div class="fw-bold small" style="line-height: 1; color: var(--text-primary);">Maya Chen
+                                </div>
+                                <div class="text-muted" style="font-size: 0.7rem;">Student</div>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>
+                                    Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item py-2 text-danger" href="../login.html"><i
+                                        class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="dashboard-container">
         <!-- Sidebar Placeholder -->
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1 class="sidebar-logo">LMS Platform</h1>
-            </div>
             <ul class="sidebar-menu">
                 <li class="menu-item">
                     <a href="dashboard.html" class="menu-link active">
@@ -27,28 +147,18 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="courses.html" class="menu-link">
-                        <i class="bi bi-search"></i> Browse Courses
-                    </a>
-                </li>
-                <li class="menu-item">
                     <a href="enrollments.html" class="menu-link">
-                        <i class="bi bi-book-half"></i> My Enrollments
+                        <i class="bi bi-book-half"></i> Courses
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="assignment.html" class="menu-link">
-                        <i class="bi bi-file-earmark-check"></i> Assignments
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="notifications.html" class="menu-link">
-                        <i class="bi bi-bell"></i> Notifications
+                    <a href="purchase-history.html" class="menu-link">
+                        <i class="bi bi-receipt"></i> Purchase History
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="profile.html" class="menu-link">
-                        <i class="bi bi-person"></i> Profile
+                        <i class="bi bi-gear"></i> Settings
                     </a>
                 </li>
             </ul>
@@ -57,7 +167,7 @@
                     <div class="user-avatar-sm">MC</div>
                     <div class="small">
                         <div class="fw-bold">Maya Chen</div>
-                        <div class="text-white-50">Student</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Student</div>
                     </div>
                 </div>
             </div>
@@ -65,55 +175,20 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Overview</h1>
+            </div>
             <!-- Header -->
-            <header class="top-header animate-fade-in">
-                <div class="d-flex align-items-center">
-                    <button class="btn btn-light d-lg-none me-3" id="sidebar-toggle">
-                        <i class="bi bi-list"></i>
-                    </button>
-                    <h2 class="h4 mb-0">Overview</h2>
-                </div>
-                
-                <div class="d-flex align-items-center gap-3">
-                    <div class="dropdown">
-                        <button class="btn btn-light position-relative rounded-circle p-2" type="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li class="px-3 py-2 border-bottom fw-bold">Notifications</li>
-                            <li><a class="dropdown-item py-2" href="notifications.html">New course available!</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-center text-primary" href="notifications.html">View All</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="dropdown">
-                        <button class="btn d-flex align-items-center gap-2 p-1 pe-3" type="button" data-bs-toggle="dropdown">
-                            <div class="user-avatar-sm">MC</div>
-                            <div class="text-start d-none d-md-block">
-                                <div class="fw-bold small" style="line-height: 1;">Maya Chen</div>
-                                <div class="text-muted" style="font-size: 0.7rem;">Student</div>
-                            </div>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2"></i> Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="../login.html"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-
             <!-- Welcome Banner -->
-            <div class="card bg-primary text-white p-4 mb-4 border-0 shadow-sm animate-fade-in">
+            <div class="card p-4 mb-4 animate-fade-in" style="border-left: 3px solid var(--accent-color)">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h2 class="display-6 fw-bold mb-2">Welcome back, Maya! 👋</h2>
-                        <p class="mb-0 opacity-75">You've completed 60% of your current goal. Keep it up and earn your next certificate!</p>
+                        <h2 class="h5 fw-bold mb-1" style="color:var(--text-primary)">Welcome back, Maya 👋</h2>
+                        <p class="text-muted mb-0" style="font-size:14px">You've completed 60% of your current goal.
+                            Keep it up and earn your next certificate!</p>
                     </div>
                     <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                        <a href="learn.html" class="btn btn-light text-primary fw-bold">Continue Learning</a>
+                        <a href="learn.html" class="btn btn-primary btn-sm">Continue Learning</a>
                     </div>
                 </div>
             </div>
@@ -122,7 +197,7 @@
             <div class="row g-4 mb-5 animate-fade-in" style="animation-delay: 0.1s;">
                 <div class="col-sm-6 col-xl-3">
                     <div class="stat-card">
-                        <div class="stat-icon bg-secondary-light text-secondary">
+                        <div class="stat-icon">
                             <i class="bi bi-book"></i>
                         </div>
                         <div>
@@ -144,7 +219,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="stat-card">
-                        <div class="stat-icon bg-warning-light text-warning" style="background-color: #fffbeb;">
+                        <div class="stat-icon bg-warning-light text-warning">
                             <i class="bi bi-clock-history"></i>
                         </div>
                         <div>
@@ -155,7 +230,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="stat-card">
-                        <div class="stat-icon bg-danger-light text-danger" style="background-color: #fef2f2;">
+                        <div class="stat-icon bg-danger-light text-danger">
                             <i class="bi bi-bell"></i>
                         </div>
                         <div>
@@ -179,7 +254,7 @@
                             </div>
                             <div class="d-flex justify-content-between small text-muted mb-3">
                                 <span>65% Complete</span>
-                                <span>12/18 Lessons</span>
+                                <span>12/18 Contents</span>
                             </div>
                             <a href="learn.html" class="btn btn-primary w-100">Continue</a>
                         </div>
@@ -195,7 +270,7 @@
                             </div>
                             <div class="d-flex justify-content-between small text-muted mb-3">
                                 <span>40% Complete</span>
-                                <span>8/20 Lessons</span>
+                                <span>8/20 Contents</span>
                             </div>
                             <a href="learn.html" class="btn btn-primary w-100">Continue</a>
                         </div>
@@ -244,4 +319,5 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/role-switcher.js"></script>
 </body>
+
 </html>

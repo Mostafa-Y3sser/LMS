@@ -63,17 +63,17 @@ function initCurriculumBuilder() {
                     </div>
                     <button class="btn btn-outline-danger btn-sm remove-module" data-target="module-${moduleCount}"><i class="bi bi-trash"></i></button>
                 </div>
-                <div class="list-group shadow-sm mb-3 lesson-list">
-                    <!-- Lessons will be added here -->
+                <div class="list-group shadow-sm mb-3 content-list">
+                    <!-- Contents will be added here -->
                 </div>
-                <button class="btn btn-outline-primary btn-sm w-100 border-dashed add-lesson-btn"><i class="bi bi-plus-lg"></i> Add Lesson</button>
+                <button class="btn btn-outline-primary btn-sm w-100 border-dashed add-content-btn"><i class="bi bi-plus-lg"></i> Add Content</button>
             </div>
         `;
         // Insert before the "Add Module" button
         addModuleBtn.insertAdjacentHTML('beforebegin', moduleHtml);
     });
 
-    // Event Delegation for Remove Module and Add Lesson
+    // Event Delegation for Remove Module and Add Content
     builderContainer.addEventListener('click', (e) => {
         // Remove Module
         if (e.target.closest('.remove-module')) {
@@ -81,38 +81,38 @@ function initCurriculumBuilder() {
             const targetId = btn.getAttribute('data-target');
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                if (confirm('Are you sure you want to delete this module and all its lessons?')) {
+                if (confirm('Are you sure you want to delete this module and all its contents?')) {
                     targetElement.classList.add('animate-fade-out');
                     setTimeout(() => targetElement.remove(), 300);
                 }
             }
         }
 
-        // Add Lesson
-        if (e.target.closest('.add-lesson-btn')) {
-            const btn = e.target.closest('.add-lesson-btn');
-            const lessonList = btn.closest('.card').querySelector('.lesson-list');
-            const lessonCount = lessonList.querySelectorAll('.list-group-item').length + 1;
+        // Add Content
+        if (e.target.closest('.add-content-btn')) {
+            const btn = e.target.closest('.add-content-btn');
+            const contentList = btn.closest('.card').querySelector('.content-list');
+            const contentCount = contentList.querySelectorAll('.list-group-item').length + 1;
             const moduleIndex = btn.closest('.card').id.split('-')[1];
 
-            const lessonHtml = `
+            const contentHtml = `
                 <div class="list-group-item d-flex align-items-center animate-fade-in">
                     <i class="bi bi-grip-vertical me-2 text-muted"></i>
-                    <span class="flex-grow-1">${moduleIndex}.${lessonCount} <input type="text" class="form-control d-inline-block w-75 border-0 bg-transparent p-0 ms-1" placeholder="Lesson title..."></span>
+                    <span class="flex-grow-1">${moduleIndex}.${contentCount} <input type="text" class="form-control d-inline-block w-75 border-0 bg-transparent p-0 ms-1" placeholder="Content title..."></span>
                     <div class="d-flex gap-1">
-                        <button class="btn btn-link btn-sm text-muted edit-lesson"><i class="bi bi-pencil"></i></button>
-                        <button class="btn btn-link btn-sm text-danger remove-lesson"><i class="bi bi-trash"></i></button>
+                        <button class="btn btn-link btn-sm text-muted edit-content"><i class="bi bi-pencil"></i></button>
+                        <button class="btn btn-link btn-sm text-danger remove-content"><i class="bi bi-trash"></i></button>
                     </div>
                 </div>
             `;
-            lessonList.insertAdjacentHTML('beforeend', lessonHtml);
+            contentList.insertAdjacentHTML('beforeend', contentHtml);
         }
 
-        // Remove Lesson
-        if (e.target.closest('.remove-lesson')) {
-            const lessonItem = e.target.closest('.list-group-item');
-            lessonItem.classList.add('animate-fade-out');
-            setTimeout(() => lessonItem.remove(), 300);
+        // Remove Content
+        if (e.target.closest('.remove-content')) {
+            const contentItem = e.target.closest('.list-group-item');
+            contentItem.classList.add('animate-fade-out');
+            setTimeout(() => contentItem.remove(), 300);
         }
     });
 }

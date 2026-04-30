@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment - LMS Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <title>Assignments - LMS Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/css/index.css">
@@ -12,207 +12,482 @@
     <link rel="stylesheet" href="../assets/css/sidebar.css">
     <link rel="stylesheet" href="../assets/css/components.css">
     <style>
-        .upload-area {
-            border: 2px dashed var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 3rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition-base);
-        }
-        .upload-area:hover {
-            border-color: var(--secondary-color);
-            background-color: var(--secondary-light);
-        }
+        .assignment-card { cursor: pointer; transition: var(--transition-base); border-left: 3px solid transparent; }
+        .assignment-card:hover { border-left-color: var(--accent-color); background-color: var(--accent-light); }
+        .status-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: var(--radius-pill); }
+        .status-pending   { background: #fff3e0; color: #bf6c00; }
+        .status-submitted { background: #e8f0fe; color: #3b5998; }
+        .status-graded    { background: #edfbf5; color: #1a6e4a; }
+        .status-overdue   { background: #fef2f2; color: #991b1b; }
+        .upload-zone { border: 2px dashed var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; cursor: pointer; transition: var(--transition-base); }
+        .upload-zone:hover, .upload-zone.drag-over { border-color: var(--accent-color); background: var(--accent-light); }
+        .module-section { margin-bottom: 2rem; }
+        .module-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; padding-left: 4px; }
+        #detail-view { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1 class="sidebar-logo">LMS Platform</h1>
+        <!-- Global Dashboard Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-public sticky-top" style="z-index: 1040;">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-3" id="sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                    <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
+                </a>
             </div>
-            <ul class="sidebar-menu">
-                <li class="menu-item">
-                    <a href="dashboard.html" class="menu-link">
-                        <i class="bi bi-grid-1x2-fill"></i> Dashboard
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="courses.html" class="menu-link">
-                        <i class="bi bi-search"></i> Browse Courses
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="enrollments.html" class="menu-link">
-                        <i class="bi bi-book-half"></i> My Enrollments
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="assignment.html" class="menu-link active">
-                        <i class="bi bi-file-earmark-check"></i> Assignments
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="notifications.html" class="menu-link">
-                        <i class="bi bi-bell"></i> Notifications
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="profile.html" class="menu-link">
-                        <i class="bi bi-person"></i> Profile
-                    </a>
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <div class="user-info-brief">
-                    <div class="user-avatar-sm">MC</div>
-                    <div class="small">
-                        <div class="fw-bold">Maya Chen</div>
-                        <div class="text-white-50">Student</div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="top-header">
-                <div class="d-flex align-items-center">
-                    <a href="learn.html" class="btn btn-light me-3"><i class="bi bi-arrow-left"></i></a>
-                    <h2 class="h4 mb-0">Assignment: Module 2 Project</h2>
-                </div>
-            </header>
-
-            <div class="container-fluid">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <ul class="nav nav-pills gap-2 mb-4" id="assignmentStates" role="tablist">
-                            <li class="nav-item">
-                                <button class="nav-link active rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#not-submitted" type="button">Not Submitted</button>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-light position-relative rounded-circle p-2" type="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">3</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 p-0" style="width: 320px; max-height: 400px; overflow-y: auto;">
+                            <li class="p-3 border-bottom d-flex justify-content-between align-items-center bg-light sticky-top">
+                                <span class="fw-bold" style="font-size: 14px;">Notifications</span>
+                                <span class="badge bg-danger rounded-pill" style="font-size: 10px;">3 New</span>
                             </li>
-                            <li class="nav-item">
-                                <button class="nav-link rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#pending" type="button">Pending Grade</button>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-megaphone"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">New Course Launched!</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Advanced AI & Machine Learning course is now available for enrollment.</p>
+                                            <span class="text-muted" style="font-size: 10px;">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
                             </li>
-                            <li class="nav-item">
-                                <button class="nav-link rounded-pill px-4" data-bs-toggle="pill" data-bs-target="#graded" type="button">Graded</button>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Assignment Graded</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your Module 2 project has been graded. Score: 85/100.</p>
+                                            <span class="text-muted" style="font-size: 10px;">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3">
+                                            <i class="bi bi-credit-card"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1" style="font-size: 13px;">Payment Successful</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your payment for "Full-Stack Web Development" was successful.</p>
+                                            <span class="text-muted" style="font-size: 10px;">Yesterday</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="bg-light sticky-bottom border-top">
+                                <div class="text-center py-2">
+                                    <a class="text-decoration-none text-primary" style="font-size: 12px; font-weight: 600;" href="#">Mark all as read</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 p-1 pe-3 border-0 bg-transparent" type="button" data-bs-toggle="dropdown">
+                            <div class="user-avatar-sm" style="width: 32px; height: 32px;">MC</div>
+                            <div class="text-start d-none d-md-block">
+                                <div class="fw-bold small" style="line-height: 1; color: var(--text-primary);">Maya Chen</div>
+                                <div class="text-muted" style="font-size: 0.7rem;">Student</div>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" href="../login.html"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="menu-item"><a href="dashboard.html" class="menu-link"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+                            <li class="menu-item">
+                    <a href="enrollments.html" class="menu-link">
+                        <i class="bi bi-book-half"></i> Courses
+                    </a>
+                </li>
+                <li class="menu-item"><a href="purchase-history.html" class="menu-link"><i class="bi bi-receipt"></i> Purchase History</a></li>
+            <li class="menu-item"><a href="profile.html" class="menu-link"><i class="bi bi-gear"></i> Settings</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info-brief">
+                <div class="user-avatar-sm">MC</div>
+                <div class="small">
+                    <div class="fw-bold" style="color:var(--text-primary)">Maya Chen</div>
+                    <div style="color:var(--text-muted)">Student</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Assignments</h1>
+            </div>
+
+        <!-- ═══════════════════ LIST VIEW ═══════════════════ -->
+        <div id="list-view">
+            <div class="animate-fade-in">
+
+                <!-- Module 1 -->
+                <div class="module-section">
+                    <div class="module-label"><i class="bi bi-collection me-1"></i>Full-Stack Web Dev — Module 1: HTML & CSS Basics</div>
+                    <div class="card">
+                        <div class="assignment-card p-4 d-flex align-items-center gap-3" onclick="openAssignment('a1')">
+                            <div style="width:40px;height:40px;border-radius:var(--radius-base);background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                <i class="bi bi-code-slash" style="color:var(--accent-color)"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold" style="color:var(--text-primary)">Build a Portfolio Page</div>
+                                <div class="small text-muted mt-1">Due: Apr 30, 2026 &nbsp;·&nbsp; 100 pts</div>
+                            </div>
+                            <span class="status-badge status-pending">Pending</span>
+                            <i class="bi bi-chevron-right text-muted ms-2"></i>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="tab-content" id="assignmentContent">
-                    <!-- State 1: Not Submitted -->
-                    <div class="tab-pane fade show active" id="not-submitted">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <div class="card p-4 mb-4">
-                                    <h3 class="h5 fw-bold mb-4">Assignment Description</h3>
-                                    <p>Build a personal portfolio website using only HTML5 and CSS3. The page must include a header, navigation, a bio section, a projects list, and a footer.</p>
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-download"></i> Assignment_Guidelines.pdf</a>
-                                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-file-zip"></i> Starter_Files.zip</a>
-                                    </div>
-                                </div>
+                <!-- Module 2 -->
+                <div class="module-section">
+                    <div class="module-label"><i class="bi bi-collection me-1"></i>Full-Stack Web Dev — Module 2: JavaScript Fundamentals</div>
+                    <div class="card">
+                        <div class="assignment-card p-4 d-flex align-items-center gap-3 border-bottom" onclick="openAssignment('a2')">
+                            <div style="width:40px;height:40px;border-radius:var(--radius-base);background:#fef3c7;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                <i class="bi bi-braces" style="color:#b45309"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold" style="color:var(--text-primary)">JS DOM Manipulation Quiz</div>
+                                <div class="small text-muted mt-1">Due: May 5, 2026 &nbsp;·&nbsp; 50 pts</div>
+                            </div>
+                            <span class="status-badge status-submitted">Submitted</span>
+                            <i class="bi bi-chevron-right text-muted ms-2"></i>
+                        </div>
+                        <div class="assignment-card p-4 d-flex align-items-center gap-3" onclick="openAssignment('a3')">
+                            <div style="width:40px;height:40px;border-radius:var(--radius-base);background:var(--accent-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                <i class="bi bi-lightning" style="color:var(--accent-color)"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold" style="color:var(--text-primary)">Async/Await Challenge</div>
+                                <div class="small text-muted mt-1">Due: Apr 20, 2026 &nbsp;·&nbsp; 75 pts</div>
+                            </div>
+                            <span class="status-badge status-overdue">Overdue</span>
+                            <i class="bi bi-chevron-right text-muted ms-2"></i>
+                        </div>
+                    </div>
+                </div>
 
-                                <div class="card p-4">
-                                    <h3 class="h5 fw-bold mb-4">Submission</h3>
-                                    <form>
-                                        <div class="mb-4">
-                                            <label class="form-label small fw-bold">Live Link (Optional)</label>
-                                            <input type="url" class="form-control" placeholder="https://github.com/your-repo">
-                                        </div>
-                                        <div class="mb-4">
-                                            <label class="form-label small fw-bold">Upload Files (.zip, .pdf)</label>
-                                            <div class="upload-area">
-                                                <i class="bi bi-cloud-arrow-up fs-1 text-secondary mb-3"></i>
-                                                <p class="mb-1 fw-bold">Click to upload or drag and drop</p>
-                                                <p class="small text-muted mb-0">ZIP or PDF files only (Max 20MB)</p>
-                                                <input type="file" class="d-none" id="fileUpload">
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary px-5 py-2">Submit Assignment</button>
-                                    </form>
+                <!-- Module 3 -->
+                <div class="module-section">
+                    <div class="module-label"><i class="bi bi-collection me-1"></i>UI/UX Design Masterclass — Module 1: Design Systems</div>
+                    <div class="card">
+                        <div class="assignment-card p-4 d-flex align-items-center gap-3" onclick="openAssignment('a4')">
+                            <div style="width:40px;height:40px;border-radius:var(--radius-base);background:#ede9fe;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                <i class="bi bi-palette" style="color:#7c3aed"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold" style="color:var(--text-primary)">Design a Color System</div>
+                                <div class="small text-muted mt-1">Due: May 12, 2026 &nbsp;·&nbsp; 80 pts</div>
+                            </div>
+                            <span class="status-badge status-graded">Graded — 76/80</span>
+                            <i class="bi bi-chevron-right text-muted ms-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════════════ DETAIL VIEW ═══════════════════ -->
+        <div id="detail-view" class="animate-fade-in">
+            <div class="row g-4">
+                <!-- Left: Description + Submission -->
+                <div class="col-lg-8">
+
+                    <!-- Assignment Details -->
+                    <div class="card p-4 mb-4">
+                        <h5 class="fw-bold mb-3">Assignment Description</h5>
+                        <p id="detail-description" class="text-secondary mb-4"></p>
+                        <div id="detail-attachments" class="d-flex gap-2 flex-wrap"></div>
+                    </div>
+
+                    <!-- Submission Panel -->
+                    <div class="card p-4" id="submission-panel">
+                        <h5 class="fw-bold mb-1">Your Submission</h5>
+                        <p class="text-muted small mb-4">Submit via file upload, a GitHub/live link, or both.</p>
+
+                        <form id="submissionForm" onsubmit="handleSubmit(event)">
+                            <!-- Link input -->
+                            <div class="mb-4">
+                                <label class="form-label">Link <span class="text-muted fw-normal">(GitHub, live URL, Google Drive…)</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-transparent"><i class="bi bi-link-45deg text-muted"></i></span>
+                                    <input type="url" class="form-control" id="submissionLink" placeholder="https://github.com/your-repo">
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="card p-4">
-                                    <h6 class="fw-bold text-muted text-uppercase mb-3">Details</h6>
-                                    <div class="d-grid gap-3 small">
-                                        <div class="d-flex justify-content-between">
-                                            <span>Deadline:</span>
-                                            <span class="fw-bold">April 30, 2026</span>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <span>Max Score:</span>
-                                            <span class="fw-bold">100 Points</span>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <span>Status:</span>
-                                            <span class="badge bg-warning-subtle text-warning">Not Submitted</span>
-                                        </div>
-                                    </div>
+
+                            <!-- File upload -->
+                            <div class="mb-4">
+                                <label class="form-label">Upload File <span class="text-muted fw-normal">(.zip, .pdf, .docx — max 20 MB)</span></label>
+                                <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                                    <i class="bi bi-cloud-arrow-up fs-2 mb-2" style="color:var(--accent-color)"></i>
+                                    <p class="fw-semibold mb-1" style="color:var(--text-primary)">Click to upload or drag & drop</p>
+                                    <p class="small text-muted mb-0" id="fileLabel">No file selected</p>
+                                    <input type="file" id="fileInput" class="d-none" accept=".zip,.pdf,.docx" onchange="onFileSelect(this)">
                                 </div>
                             </div>
+
+                            <!-- Submit -->
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary px-4">Submit Assignment</button>
+                                <button type="button" class="btn btn-light" onclick="closeAssignment()">Cancel</button>
+                            </div>
+                        </form>
+
+                        <!-- Submitted state (hidden by default) -->
+                        <div id="submitted-state" class="d-none text-center py-4">
+                            <div style="width:56px;height:56px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem">
+                                <i class="bi bi-check-lg fs-3" style="color:var(--accent-color)"></i>
+                            </div>
+                            <h5 class="fw-bold">Submitted!</h5>
+                            <p class="text-muted small">Your work has been submitted and is awaiting review.</p>
                         </div>
                     </div>
 
-                    <!-- State 2: Pending -->
-                    <div class="tab-pane fade" id="pending">
-                        <div class="card p-5 text-center shadow-sm">
-                            <div class="stat-icon mx-auto mb-4 bg-warning-light text-warning" style="width: 80px; height: 80px; font-size: 2.5rem;">
-                                <i class="bi bi-hourglass-split"></i>
+                    <!-- Graded feedback panel (shown when graded) -->
+                    <div class="card p-4 d-none" id="grade-panel">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div style="width:48px;height:48px;border-radius:50%;background:#edfbf5;display:flex;align-items:center;justify-content:center">
+                                <i class="bi bi-award" style="color:#1a6e4a;font-size:1.4rem"></i>
                             </div>
-                            <h3 class="h4 fw-bold">Awaiting Grade</h3>
-                            <p class="text-secondary mb-4 mx-auto" style="max-width: 500px;">Your submission has been received and is currently in queue for grading by an instructor or assistant. We'll notify you once it's graded.</p>
-                            
-                            <div class="card bg-light border-0 p-4 text-start mx-auto" style="max-width: 600px;">
-                                <h6 class="fw-bold mb-3">Your Submission:</h6>
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="bi bi-file-earmark-zip me-2 text-primary"></i>
-                                    <span>portfolio-project.zip</span>
-                                    <span class="ms-auto text-muted small">Submitted Apr 24, 2026</span>
-                                </div>
+                            <div>
+                                <h5 class="fw-bold mb-0">Assignment Graded</h5>
+                                <div class="text-muted small">Reviewed by instructor</div>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <div class="h3 fw-bold mb-0" id="grade-score" style="color:var(--accent-color)"></div>
+                                <div class="text-muted small">Score</div>
                             </div>
                         </div>
+                        <div class="p-3 rounded" style="background:var(--surface-dim)">
+                            <div class="small fw-bold text-uppercase text-muted mb-1">Instructor Feedback</div>
+                            <p class="mb-0 small" id="grade-feedback"></p>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- State 3: Graded -->
-                    <div class="tab-pane fade" id="graded">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <div class="card p-4 mb-4 border-start border-4 border-accent">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div class="stat-icon bg-accent-light text-accent me-3">
-                                            <i class="bi bi-award"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="h4 fw-bold mb-0">Well done, Maya!</h3>
-                                            <p class="text-muted mb-0">Your assignment has been graded.</p>
-                                        </div>
-                                        <div class="ms-auto text-end">
-                                            <div class="h2 fw-bold text-accent mb-0">85/100</div>
-                                            <div class="small text-muted fw-bold">GRADE</div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 bg-light rounded-3">
-                                        <h6 class="fw-bold mb-2 small text-uppercase">Instructor Comment:</h6>
-                                        <p class="mb-0">Excellent work on the semantic structure! Your use of the &lt;main&gt; and &lt;article&gt; tags was spot on. Consider improving the mobile responsiveness of your navigation menu for a higher score next time.</p>
-                                    </div>
-                                </div>
+                <!-- Right: Meta Info -->
+                <div class="col-lg-4">
+                    <div class="card p-4">
+                        <h6 class="fw-bold text-uppercase text-muted small mb-3">Details</h6>
+                        <div class="d-grid gap-3" style="font-size:14px">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Course</span>
+                                <span class="fw-semibold text-end" id="detail-course" style="max-width:180px"></span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Module</span>
+                                <span class="fw-semibold text-end" id="detail-module-name"></span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Deadline</span>
+                                <span class="fw-semibold" id="detail-deadline"></span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Max Score</span>
+                                <span class="fw-semibold" id="detail-points"></span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">Status</span>
+                                <span class="status-badge" id="detail-status-badge2"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+
+    </main>
+</div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/role-switcher.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/role-switcher.js"></script>
+<script>
+const assignments = {
+    a1: {
+        title: 'Build a Portfolio Page',
+        module: 'Module 1: HTML & CSS Basics',
+        course: 'Full-Stack Web Development',
+        deadline: 'Apr 30, 2026',
+        points: '100 pts',
+        status: 'pending',
+        description: 'Build a personal portfolio website using only HTML5 and CSS3. The page must include a header, a navigation bar, a bio section, a projects showcase section, and a footer. Focus on semantic HTML and clean CSS layout techniques.',
+        attachments: ['Assignment_Guidelines.pdf', 'Starter_Files.zip'],
+        grade: null,
+        feedback: null
+    },
+    a2: {
+        title: 'JS DOM Manipulation Quiz',
+        module: 'Module 2: JavaScript Fundamentals',
+        course: 'Full-Stack Web Development',
+        deadline: 'May 5, 2026',
+        points: '50 pts',
+        status: 'submitted',
+        description: 'Complete the interactive DOM manipulation quiz. You will be asked to write short JavaScript snippets that select, create, modify, and delete DOM elements. Submit your answers as a single .js file.',
+        attachments: ['Quiz_Instructions.pdf'],
+        grade: null,
+        feedback: null
+    },
+    a3: {
+        title: 'Async/Await Challenge',
+        module: 'Module 2: JavaScript Fundamentals',
+        course: 'Full-Stack Web Development',
+        deadline: 'Apr 20, 2026',
+        points: '75 pts',
+        status: 'overdue',
+        description: 'Implement a small weather app that fetches data from a public API using async/await and displays the results on a webpage. Handle loading and error states gracefully.',
+        attachments: ['Challenge_Spec.pdf'],
+        grade: null,
+        feedback: null
+    },
+    a4: {
+        title: 'Design a Color System',
+        module: 'Module 1: Design Systems',
+        course: 'UI/UX Design Masterclass',
+        deadline: 'May 12, 2026',
+        points: '80 pts',
+        status: 'graded',
+        description: 'Create a comprehensive color system for a fictional SaaS product. Define primary, secondary, semantic (success, warning, error), and neutral colors. Export your palette as a Figma file or PDF with rationale for each choice.',
+        attachments: ['Design_Brief.pdf'],
+        grade: '76/80',
+        feedback: 'Excellent color choices and great rationale for each palette. The neutral scale is particularly well thought out. Minor deduction for not including a dark-mode variant — consider that for future projects!'
+    }
+};
+
+const statusMap = {
+    pending:   { label: 'Pending',   cls: 'status-pending'   },
+    submitted: { label: 'Submitted', cls: 'status-submitted' },
+    graded:    { label: 'Graded',    cls: 'status-graded'    },
+    overdue:   { label: 'Overdue',   cls: 'status-overdue'   }
+};
+
+function openAssignment(id) {
+    const a = assignments[id];
+    const s = statusMap[a.status];
+
+    document.getElementById('detail-module').textContent = a.module;
+    document.getElementById('detail-title').textContent = a.title;
+    document.getElementById('detail-description').textContent = a.description;
+    document.getElementById('detail-course').textContent = a.course;
+    document.getElementById('detail-module-name').textContent = a.module;
+    document.getElementById('detail-deadline').textContent = a.deadline;
+    document.getElementById('detail-points').textContent = a.points;
+
+    ['detail-status-badge','detail-status-badge2'].forEach(id => {
+        const el = document.getElementById(id);
+        el.textContent = a.status === 'graded' ? 'Graded — ' + a.grade : s.label;
+        el.className = 'status-badge ' + s.cls;
+    });
+
+    // Attachments
+    const attEl = document.getElementById('detail-attachments');
+    attEl.innerHTML = a.attachments.map(f =>
+        `<a href="#" class="btn btn-light btn-sm"><i class="bi bi-paperclip me-1"></i>${f}</a>`
+    ).join('');
+
+    // Show/hide panels
+    const subPanel = document.getElementById('submission-panel');
+    const gradePanel = document.getElementById('grade-panel');
+    document.getElementById('submissionForm').classList.remove('d-none');
+    document.getElementById('submitted-state').classList.add('d-none');
+
+    if (a.status === 'graded') {
+        subPanel.classList.add('d-none');
+        gradePanel.classList.remove('d-none');
+        document.getElementById('grade-score').textContent = a.grade;
+        document.getElementById('grade-feedback').textContent = a.feedback;
+    } else if (a.status === 'submitted') {
+        subPanel.classList.remove('d-none');
+        gradePanel.classList.add('d-none');
+        document.getElementById('submissionForm').classList.add('d-none');
+        document.getElementById('submitted-state').classList.remove('d-none');
+    } else {
+        subPanel.classList.remove('d-none');
+        gradePanel.classList.add('d-none');
+    }
+
+    document.getElementById('list-view').style.display = 'none';
+    document.getElementById('detail-view').style.display = 'block';
+    window.scrollTo(0,0);
+}
+
+function closeAssignment() {
+    document.getElementById('detail-view').style.display = 'none';
+    document.getElementById('list-view').style.display = 'block';
+}
+
+function onFileSelect(input) {
+    const label = document.getElementById('fileLabel');
+    label.textContent = input.files[0] ? input.files[0].name : 'No file selected';
+}
+
+function handleSubmit(e) {
+    e.preventDefault();
+    const link = document.getElementById('submissionLink').value;
+    const file = document.getElementById('fileInput').files[0];
+    if (!link && !file) { alert('Please provide a link or upload a file.'); return; }
+    document.getElementById('submissionForm').classList.add('d-none');
+    document.getElementById('submitted-state').classList.remove('d-none');
+}
+
+// Drag & drop
+const zone = document.getElementById('uploadZone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file) { document.getElementById('fileInput').files = e.dataTransfer.files; onFileSelect(document.getElementById('fileInput')); }
+});
+</script>
 </body>
 </html>
-

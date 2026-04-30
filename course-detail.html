@@ -43,22 +43,23 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-public sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
-                <span>LMS Platform</span>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item">
-                        <a class="nav-link" href="courses.html">Browse Courses</a>
-                    </li>
+                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Browse Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <div class="d-flex align-items-center gap-2">
-                    <a href="login.html" class="btn btn-outline-primary">Login</a>
-                    <a href="register.html" class="btn btn-primary">Sign Up</a>
+                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                    <a href="login.html" class="btn btn-light">Log in</a>
+                    <a href="register.html" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
         </div>
@@ -72,8 +73,8 @@
                 <div class="col-lg-7">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="courses.html" class="text-white-50">Courses</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="text-white-50">Development</a></li>
+                            <li class="breadcrumb-item"><a href="courses.html" style="font-size:12px;color:var(--text-muted)">Courses</a></li>
+                            <li class="breadcrumb-item"><a href="#" style="font-size:12px;color:var(--text-muted)">Development</a></li>
                             <li class="breadcrumb-item active text-white" aria-current="page">Web Development</li>
                         </ol>
                     </nav>
@@ -164,6 +165,26 @@
                     <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                     <p class="text-secondary">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 </div>
+
+                <!-- Instructor -->
+                <div class="card p-4 mt-5">
+                    <h3 class="h5 fw-bold mb-4">Instructor</h3>
+                    <div class="d-flex gap-3 align-items-start">
+                        <a href="about.html" style="text-decoration: none;">
+                            <div class="instructor-avatar" style="width: 64px; height: 64px; border-radius: 50%; background: var(--secondary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0;">CS</div>
+                        </a>
+                        <div>
+                            <h4 class="h6 fw-bold mb-1"><a href="about.html" class="text-dark text-decoration-none">Creative Studio</a></h4>
+                            <p class="text-muted small mb-2">Senior Product Designer & UX Educator</p>
+                            <div class="d-flex flex-wrap gap-3 small text-muted mb-3">
+                                <span><i class="bi bi-star-fill text-warning me-1"></i>4.9 Rating</span>
+                                <span><i class="bi bi-people me-1"></i>18,000+ Students</span>
+                                <span><i class="bi bi-collection-play me-1"></i>8 Courses</span>
+                            </div>
+                            <p class="small mb-0 text-secondary">A decade of product design experience at top tech companies. Passionate about teaching practical, real-world design skills that get you hired.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Right Column: Sidebar Card -->
@@ -172,14 +193,14 @@
                     <img src="assets/images/course_web_dev.png" class="card-img-top" alt="Course Thumbnail">
                     <div class="card-body p-4 text-center">
                         <div class="h2 fw-bold mb-3">$89.99</div>
-                        <a href="register.html" class="btn btn-primary w-100 btn-lg mb-3">Enroll Now</a>
+                        <a href="login.html?redirect=student/checkout.html" class="btn btn-primary w-100 btn-lg mb-3">Enroll Now</a>
                         <p class="small text-muted mb-4">30-Day Money-Back Guarantee</p>
                         
                         <div class="text-start">
                             <h6 class="fw-bold mb-3">This course includes:</h6>
                             <ul class="list-unstyled d-grid gap-2 small">
                                 <li><i class="bi bi-display me-2"></i> 48 hours on-demand video</li>
-                                <li><i class="bi bi-file-earmark-arrow-down me-2"></i> 12 downloadable resources</li>
+                                <li><i class="bi bi-file-earmark-arrow-down me-2"></i> 12 downloadable material</li>
                                 <li><i class="bi bi-infinity me-2"></i> Full lifetime access</li>
                                 <li><i class="bi bi-phone me-2"></i> Access on mobile and TV</li>
                                 <li><i class="bi bi-trophy me-2"></i> Certificate of completion</li>
