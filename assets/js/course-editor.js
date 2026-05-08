@@ -66,38 +66,7 @@ function initCurriculumBuilder() {
                 <div class="list-group shadow-sm mb-3 content-list">
                     <!-- Contents will be added here -->
                 </div>
-<<<<<<< HEAD
                 <button class="btn btn-outline-primary btn-sm w-100 border-dashed add-content-btn"><i class="bi bi-plus-lg"></i> Add Content</button>
-=======
-                <button class="btn btn-outline-primary btn-sm w-100 border-dashed add-lesson-btn mb-3"><i class="bi bi-plus-lg"></i> Add Lesson</button>
-                
-                <!-- Module Assignment Section -->
-                <div class="card card-body bg-white border-0 shadow-sm mt-2">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="fw-bold mb-0"><i class="bi bi-file-earmark-text text-warning me-2"></i>Module Assignment</h6>
-                        <div class="form-check form-switch mb-0">
-                            <input class="form-check-input toggle-assignment" type="checkbox" id="hasAssignment-${moduleCount}">
-                            <label class="form-check-label small" for="hasAssignment-${moduleCount}">Enable</label>
-                        </div>
-                    </div>
-                    <div class="assignment-details d-none mt-3 pt-3 border-top">
-                        <div class="row g-3">
-                            <div class="col-md-12">
-                                <label class="form-label small fw-bold">Assignment Title</label>
-                                <input type="text" class="form-control form-control-sm" placeholder="e.g. Module ${moduleCount} Final Project">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label small fw-bold">Instructions</label>
-                                <textarea class="form-control form-control-sm" rows="2" placeholder="Describe the requirements..."></textarea>
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label small fw-bold">Attachment File</label>
-                                <input type="file" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
->>>>>>> 9d41510daa60ab3e79d5893be0dd5c7ff2c28e25
             </div>
         `;
         // Insert before the "Add Module" button
@@ -126,7 +95,6 @@ function initCurriculumBuilder() {
             const contentCount = contentList.querySelectorAll('.list-group-item').length + 1;
             const moduleIndex = btn.closest('.card').id.split('-')[1];
 
-<<<<<<< HEAD
             const contentHtml = `
                 <div class="list-group-item d-flex align-items-center animate-fade-in">
                     <i class="bi bi-grip-vertical me-2 text-muted"></i>
@@ -134,68 +102,6 @@ function initCurriculumBuilder() {
                     <div class="d-flex gap-1">
                         <button class="btn btn-link btn-sm text-muted edit-content"><i class="bi bi-pencil"></i></button>
                         <button class="btn btn-link btn-sm text-danger remove-content"><i class="bi bi-trash"></i></button>
-=======
-            const lessonId = `lesson-${moduleIndex}-${lessonCount}`;
-            const lessonHtml = `
-                <div class="list-group-item flex-column align-items-start animate-fade-in p-3">
-                    <div class="d-flex align-items-center w-100">
-                        <i class="bi bi-grip-vertical me-2 text-muted"></i>
-                        <span class="flex-grow-1 fw-medium">${moduleIndex}.${lessonCount} <input type="text" class="form-control d-inline-block w-75 border-0 bg-transparent p-0 ms-1 fw-medium" placeholder="Lesson title..."></span>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-light toggle-lesson-details" data-bs-toggle="collapse" data-bs-target="#${lessonId}-details" aria-expanded="false"><i class="bi bi-chevron-down"></i></button>
-                            <button class="btn btn-sm btn-light text-danger remove-lesson"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </div>
-                    
-                    <div class="collapse mt-3" id="${lessonId}-details">
-                        <div class="card card-body bg-light border-0 p-3">
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <label class="form-label small fw-bold">Content Type</label>
-                                    <select class="form-select form-select-sm lesson-type-select">
-                                        <option value="video">Video</option>
-                                        <option value="article">Article</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-8 video-input-group">
-                                    <label class="form-label small fw-bold">Video URL</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="https://youtube.com/...">
-                                </div>
-                                <div class="col-md-12 article-input-group d-none">
-                                    <label class="form-label small fw-bold">Article Content</label>
-                                    <div class="border rounded bg-white">
-                                        <div class="bg-light border-bottom p-2 d-flex gap-2 flex-wrap">
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark fw-bold">B</button>
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark fst-italic">I</button>
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark text-decoration-underline">U</button>
-                                            </div>
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ul"></i></button>
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-list-ol"></i></button>
-                                            </div>
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-image"></i></button>
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-link-45deg"></i></button>
-                                                <button type="button" class="btn btn-outline-secondary border-0 text-dark"><i class="bi bi-code-slash"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="p-3 editor-content" contenteditable="true" style="min-height: 200px; outline: none;">
-                                            <p class="text-muted mb-0">Write your lesson content here...</p>
-                                        </div>
-                                        <div class="bg-light border-top p-2 d-flex justify-content-between text-muted" style="font-size: 0.75rem;">
-                                            <span>Last saved: Just now</span>
-                                            <span>Words: 0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label small fw-bold">Additional Resources (Optional)</label>
-                                    <input type="file" class="form-control form-control-sm" multiple>
-                                </div>
-                            </div>
-                        </div>
->>>>>>> 9d41510daa60ab3e79d5893be0dd5c7ff2c28e25
                     </div>
                 </div>
             `;
