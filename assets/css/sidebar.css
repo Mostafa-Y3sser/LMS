@@ -37,6 +37,8 @@
     padding: 1rem 0.75rem;
     list-style: none;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-item {

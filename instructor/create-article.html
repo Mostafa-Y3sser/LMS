@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Article - Instructor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/article-editor.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-public sticky-top" style="z-index: 1040;">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-3" id="sidebar-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
+                    <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
+                </a>
+            </div>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <button class="btn btn-light text-secondary fw-semibold border-0 bg-transparent">Draft Saved 12:45 PM</button>
+                <button class="btn btn-outline-primary px-4 rounded-pill fw-bold">Preview</button>
+                <button class="btn btn-primary px-4 rounded-pill fw-bold shadow-sm" onclick="window.location.href='create-course.html?step=1'">Save & Exit</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html" class="menu-link">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="users.html" class="menu-link">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="enrollments.html" class="menu-link">
+                        <i class="bi bi-person-check"></i> Enrollments
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#coursesSubmenu" data-bs-toggle="collapse" class="menu-link d-flex align-items-center w-100 active">
+                        <i class="bi bi-book"></i> Courses <i class="bi bi-chevron-down ms-auto" style="font-size: 0.8rem;"></i>
+                    </a>
+                    <ul class="collapse list-unstyled show" id="coursesSubmenu">
+                        <li class="menu-item mt-1">
+                            <a href="courses.html" class="menu-link py-2" style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-grid"></i> All Courses
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="create-course.html" class="menu-link py-2 active" style="padding-left: 3rem; font-size: 0.9rem;">
+                                <i class="bi bi-plus-circle"></i> Create New Course
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="submissions.html" class="menu-link">
+                        <i class="bi bi-file-earmark-check"></i> Submissions
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="payments.html" class="menu-link">
+                        <i class="bi bi-credit-card"></i> Payments
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="settings.html" class="menu-link">
+                        <i class="bi bi-gear"></i> Settings
+                    </a>
+                </li>
+                <li class="menu-item mt-auto border-top pt-2">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="mb-4">
+                <button class="btn btn-light btn-sm" onclick="window.location.href='create-course.html?step=1'">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Options
+                </button>
+            </div>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="courses.html">Courses</a></li>
+                    <li class="breadcrumb-item"><a href="create-course.html">Create Course</a></li>
+                    <li class="breadcrumb-item active">New Article</li>
+                </ol>
+            </nav>
+
+            <div class="row g-4">
+                <div class="col-lg-9">
+                    <div class="editor-container animate-fade-in">
+                        <div class="editor-toolbar">
+                            <button class="toolbar-btn" onclick="execCmd('bold')" title="Bold"><i class="bi bi-type-bold"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('italic')" title="Italic"><i class="bi bi-type-italic"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('underline')" title="Underline"><i class="bi bi-type-underline"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('strikeThrough')" title="Strikethrough"><i class="bi bi-type-strikethrough"></i></button>
+                            
+                            <div class="toolbar-divider"></div>
+                            
+                            <button class="toolbar-btn" onclick="execCmd('justifyLeft')" title="Align Left"><i class="bi bi-text-left"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('justifyCenter')" title="Align Center"><i class="bi bi-text-center"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('justifyRight')" title="Align Right"><i class="bi bi-text-right"></i></button>
+                            
+                            <div class="toolbar-divider"></div>
+                            
+                            <button class="toolbar-btn" onclick="execCmd('insertUnorderedList')" title="Bullet List"><i class="bi bi-list-ul"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('insertOrderedList')" title="Numbered List"><i class="bi bi-list-ol"></i></button>
+                            
+                            <div class="toolbar-divider"></div>
+                            
+                            <button class="toolbar-btn" onclick="execCmd('createLink', prompt('Enter URL:'))" title="Insert Link"><i class="bi bi-link-45deg"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('insertImage', prompt('Enter Image URL:'))" title="Insert Image"><i class="bi bi-image"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('formatBlock', 'blockquote')" title="Quote"><i class="bi bi-quote"></i></button>
+                            <button class="toolbar-btn" onclick="execCmd('formatBlock', 'pre')" title="Code Block"><i class="bi bi-code-slash"></i></button>
+                            
+                            <div class="toolbar-divider"></div>
+                            
+                            <button class="toolbar-btn" onclick="execCmd('removeFormat')" title="Clear Formatting"><i class="bi bi-eraser"></i></button>
+                        </div>
+                        
+                        <div class="editor-content p-5">
+                            <input type="text" class="article-title-input" placeholder="Enter Article Title..." autofocus>
+                            <div id="editor" contenteditable="true" placeholder="Start writing your amazing article content here..." style="min-height: 400px; outline: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="publish-card animate-fade-in" style="animation-delay: 0.1s;">
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-3">Article Settings</h6>
+                                
+                                <div class="mb-0">
+                                    <label class="form-label small fw-bold text-muted">Reading Time</label>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" class="form-control" value="5">
+                                        <span class="input-group-text">mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/article-editor.js"></script>
+</body>
+</html>

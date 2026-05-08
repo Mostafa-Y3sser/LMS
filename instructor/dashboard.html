@@ -32,7 +32,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <!-- Guest: Home -->
+                    <li class="nav-item guest-only"><a class="nav-link" href="../index.html">Home</a></li>
+                    <!-- Logged in: Dashboard -->
+                    <li class="nav-item student-only d-none"><a class="nav-link" href="../student/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item instructor-only d-none"><a class="nav-link" href="../instructor/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item assistant-only d-none"><a class="nav-link" href="../assistant/dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
@@ -106,7 +111,7 @@
                             </div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item py-2" href="settings.html"><i class="bi bi-gear me-2"></i> Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item py-2 text-danger" href="../login.html"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
                         </ul>
@@ -126,21 +131,14 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#usersSubmenu" data-bs-toggle="collapse" class="menu-link d-flex align-items-center w-100 ">
-                        <i class="bi bi-people"></i> Users <i class="bi bi-chevron-down ms-auto" style="font-size: 0.8rem;"></i>
+                    <a href="users.html" class="menu-link">
+                        <i class="bi bi-people"></i> Users
                     </a>
-                    <ul class="collapse list-unstyled " id="usersSubmenu">
-                        <li class="menu-item mt-1">
-                            <a href="users.html" class="menu-link py-2 " style="padding-left: 3rem; font-size: 0.9rem;">
-                                <i class="bi bi-people"></i> All Users
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="create-assistant.html" class="menu-link py-2 " style="padding-left: 3rem; font-size: 0.9rem;">
-                                <i class="bi bi-person-plus"></i> Create Assistant
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="enrollments.html" class="menu-link">
+                        <i class="bi bi-person-check"></i> Enrollments
+                    </a>
                 </li>
                 <li class="menu-item">
                     <a href="#coursesSubmenu" data-bs-toggle="collapse" class="menu-link d-flex align-items-center w-100 ">
@@ -170,20 +168,16 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="profile.html" class="menu-link ">
+                    <a href="settings.html" class="menu-link ">
                         <i class="bi bi-gear"></i> Settings
                     </a>
                 </li>
+                <li class="menu-item mt-auto border-top pt-2">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
             </ul>
-            <div class="sidebar-footer">
-                <div class="user-info-brief">
-                    <div class="user-avatar-sm">AK</div>
-                    <div class="small">
-                        <div class="fw-bold">Alex King</div>
-                        <div style="font-size:12px;color:var(--text-muted)">Admin</div>
-                    </div>
-                </div>
-            </div>
         </aside>
 
 
@@ -288,3 +282,6 @@
     <script src="../assets/js/role-switcher.js"></script>
 </body>
 </html>
+
+
+

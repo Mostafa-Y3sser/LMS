@@ -3,209 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Detail - LMS Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <title>Course Details - LMS Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
-    <style>
-        .course-hero {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 4rem 0;
-            position: relative;
-        }
-        .course-hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(90deg, var(--primary-color) 40%, transparent 100%);
-            z-index: 1;
-        }
-        .course-hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .sticky-card {
-            position: sticky;
-            top: 100px;
-            z-index: 100;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Global Navbar (Public) -->
     <nav class="navbar navbar-expand-lg navbar-public sticky-top">
-        <div class="container">
+        <div class="container px-4">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.2rem;"></i>
-                <span style="font-weight:700; font-size:1rem; color:var(--text-primary); letter-spacing:-0.01em;">LMS Platform</span>
+                <i class="bi bi-mortarboard-fill" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                <span style="font-weight:700; font-size:1.25rem; color:var(--text-primary); letter-spacing:-0.02em;">LMS Platform</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
+                <ul class="navbar-nav ms-auto gap-lg-3">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Browse Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary px-4" href="login.html">Sign In</a></li>
+                    <li class="nav-item"><a class="btn btn-primary px-4" href="signup.html">Create Account</a></li>
                 </ul>
-                <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                    <a href="login.html" class="btn btn-light">Log in</a>
-                    <a href="register.html" class="btn btn-primary">Get Started</a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Course Hero -->
-    <section class="course-hero overflow-hidden">
-        <img src="assets/images/course_web_dev.png" class="position-absolute top-0 end-0 h-100 w-50 object-fit-cover opacity-25" alt="Course Background">
-        <div class="container course-hero-content">
-            <div class="row">
-                <div class="col-lg-7">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="courses.html" style="font-size:12px;color:var(--text-muted)">Courses</a></li>
-                            <li class="breadcrumb-item"><a href="#" style="font-size:12px;color:var(--text-muted)">Development</a></li>
-                            <li class="breadcrumb-item active text-white" aria-current="page">Web Development</li>
-                        </ol>
-                    </nav>
-                    <h1 class="display-4 fw-bold mb-3">Full-Stack Web Development Bootcamp 2026</h1>
-                    <p class="lead mb-4 opacity-75">Become a professional full-stack web developer. Learn HTML, CSS, JavaScript, Node.js, and more from scratch.</p>
-                    <div class="d-flex flex-wrap gap-4 mb-4">
-                        <div class="d-flex align-items-center"><i class="bi bi-star-fill text-warning me-2"></i> 4.8 (2,450 ratings)</div>
-                        <div class="d-flex align-items-center"><i class="bi bi-people me-2"></i> 12,450 students enrolled</div>
-                        <div class="d-flex align-items-center"><i class="bi bi-patch-check me-2"></i> Last updated 03/2026</div>
-                    </div>
-                </div>
-            </div>
+    <div class="container py-5">
+        <!-- Top Header / Breadcrumb -->
+        <div class="d-flex align-items-center mb-5 animate-fade-in">
+            <a href="courses.html" class="btn btn-light rounded-circle me-3 shadow-sm" title="Back to Courses"><i class="bi bi-arrow-left"></i></a>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none" style="color: var(--text-muted); font-size: 14px;">Home</a></li>
+                    <li class="breadcrumb-item"><a href="courses.html" class="text-decoration-none" style="color: var(--text-muted); font-size: 14px;">Courses</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: var(--text-primary); font-size: 14px; font-weight: 600;">Full-Stack Web Development Bootcamp</li>
+                </ol>
+            </nav>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <div class="container section-padding">
         <div class="row g-5">
-            <!-- Left Column: Details -->
+            <!-- Left Column: Course Details -->
             <div class="col-lg-8">
-                <div class="card p-4 mb-5">
-                    <h2 class="h3 mb-4">What you'll learn</h2>
-                    <div class="row g-3">
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Build 10+ real-world web projects.</div>
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Master HTML5, CSS3, and modern layouts.</div>
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Deep dive into JavaScript (ES6+).</div>
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Learn Backend with Node.js and Express.</div>
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Work with Databases (MongoDB/SQL).</div>
-                        <div class="col-md-6"><i class="bi bi-check2 text-accent me-2"></i> Deploy applications to the cloud.</div>
+                <div class="animate-fade-in">
+                    <!-- Course Header -->
+                    <div class="mb-4">
+                        <h1 class="display-5 fw-bold mb-3" style="color: var(--text-primary); letter-spacing: -0.02em;">Full-Stack Web Development Bootcamp 2026</h1>
+                        <p class="lead text-secondary mb-0">Master modern web development from scratch. Learn HTML, CSS, JavaScript, React, and Node.js with real-world projects.</p>
                     </div>
-                </div>
 
-                <h2 class="h3 mb-4">Course Content</h2>
-                <div class="accordion" id="courseAccordion">
-                    <!-- Module 1 -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#module1">
-                                Module 1: Introduction to Web Development
-                            </button>
-                        </h2>
-                        <div id="module1" class="accordion-collapse collapse show" data-bs-parent="#courseAccordion">
-                            <div class="accordion-body p-0">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-play-circle me-3 text-secondary"></i>
-                                            <span>How the Web Works</span>
+                    <!-- Course Thumbnail -->
+                    <div class="player-wrapper mb-5 shadow-lg rounded-4 overflow-hidden position-relative">
+                        <img src="assets/images/course_web_dev.png" class="img-fluid w-100" alt="Course Thumbnail" style="min-height: 400px; object-fit: cover;">
+                        <button class="play-btn-overlay">
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tab Bar -->
+                    <ul class="nav nav-tabs course-nav-tabs mb-4" id="courseTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">Overview</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button" role="tab">Curriculum</button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content pb-5" id="courseTabContent">
+                        <!-- Overview Tab -->
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                            <section class="mb-5">
+                                <h4 class="fw-bold mb-3" style="color: var(--text-primary);">Description</h4>
+                                <div class="text-secondary" style="line-height: 1.8;">
+                                    <p>Welcome to the most comprehensive Full-Stack Web Development Bootcamp on the market. In this course, you will go from zero to a professional web developer, learning both the frontend and backend technologies that power the modern web.</p>
+                                    <p>We start with the fundamentals of HTML5 and CSS3, then move into advanced layouts with Flexbox and Grid. You'll master JavaScript (ES6+), then dive deep into React for building dynamic interfaces, and Node.js/Express for scalable backend services.</p>
+                                </div>
+                            </section>
+
+                            <section class="mb-5">
+                                <h4 class="fw-bold mb-3" style="color: var(--text-primary);">What You Will Learn</h4>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <div class="stat-icon bg-success-subtle text-success rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="bi bi-check2"></i>
+                                            </div>
+                                            <span class="fw-medium">Modern HTML5 & CSS3 layout techniques</span>
                                         </div>
-                                        <span class="badge bg-light text-muted">10:00</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-lock me-3 text-muted"></i>
-                                            <span class="text-muted">Setting up Development Environment</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <div class="stat-icon bg-success-subtle text-success rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="bi bi-check2"></i>
+                                            </div>
+                                            <span class="fw-medium">Advanced JavaScript & ES6+ concepts</span>
                                         </div>
-                                        <i class="bi bi-lock text-muted"></i>
-                                    </li>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <div class="stat-icon bg-success-subtle text-success rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="bi bi-check2"></i>
+                                            </div>
+                                            <span class="fw-medium">Building reactive UI with React & Redux</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="d-flex gap-3 align-items-center">
+                                            <div class="stat-icon bg-success-subtle text-success rounded-circle p-2" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                                <i class="bi bi-check2"></i>
+                                            </div>
+                                            <span class="fw-medium">RESTful API design with Node & Express</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="mb-5">
+                                <h4 class="fw-bold mb-3" style="color: var(--text-primary);">Who This Course Is For</h4>
+                                <ul class="text-secondary ps-3" style="line-height: 1.8;">
+                                    <li class="mb-2">Beginners who want to start their career in web development.</li>
+                                    <li class="mb-2">Designers who want to learn how to code their designs.</li>
+                                    <li class="mb-2">Developers looking to upgrade their skills to full-stack.</li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Module 2 -->
-                    <div class="accordion-item mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#module2">
-                                Module 2: HTML5 & Semantic Web
-                            </button>
-                        </h2>
-                        <div id="module2" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
-                            <div class="accordion-body p-0">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-lock me-3 text-muted"></i>
-                                            <span class="text-muted">HTML Document Structure</span>
-                                        </div>
-                                        <i class="bi bi-lock text-muted"></i>
-                                    </li>
+                            </section>
+
+                            <section class="mb-5">
+                                <h4 class="fw-bold mb-3" style="color: var(--text-primary);">Course Requirements</h4>
+                                <ul class="text-secondary ps-3" style="line-height: 1.8;">
+                                    <li class="mb-2">Basic understanding of computer operations.</li>
+                                    <li class="mb-2">A laptop with Windows, macOS, or Linux.</li>
+                                    <li class="mb-2">No prior coding experience required.</li>
                                 </ul>
-                            </div>
+                            </section>
                         </div>
-                    </div>
-                </div>
 
-                <div class="mt-5">
-                    <h2 class="h3 mb-4">Description</h2>
-                    <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p class="text-secondary">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
-
-                <!-- Instructor -->
-                <div class="card p-4 mt-5">
-                    <h3 class="h5 fw-bold mb-4">Instructor</h3>
-                    <div class="d-flex gap-3 align-items-start">
-                        <a href="about.html" style="text-decoration: none;">
-                            <div class="instructor-avatar" style="width: 64px; height: 64px; border-radius: 50%; background: var(--secondary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; flex-shrink: 0;">CS</div>
-                        </a>
-                        <div>
-                            <h4 class="h6 fw-bold mb-1"><a href="about.html" class="text-dark text-decoration-none">Creative Studio</a></h4>
-                            <p class="text-muted small mb-2">Senior Product Designer & UX Educator</p>
-                            <div class="d-flex flex-wrap gap-3 small text-muted mb-3">
-                                <span><i class="bi bi-star-fill text-warning me-1"></i>4.9 Rating</span>
-                                <span><i class="bi bi-people me-1"></i>18,000+ Students</span>
-                                <span><i class="bi bi-collection-play me-1"></i>8 Courses</span>
+                        <!-- Curriculum Tab -->
+                        <div class="tab-pane fade" id="curriculum" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="fw-bold mb-0" style="color: var(--text-primary);">Course Content</h4>
+                                <div class="small text-muted fw-medium">8 sections | 42 contents | 48h total</div>
                             </div>
-                            <p class="small mb-0 text-secondary">A decade of product design experience at top tech companies. Passionate about teaching practical, real-world design skills that get you hired.</p>
+                             <div class="accordion custom-accordion" id="curriculumAccordion">
+                                <!-- Section 1 -->
+                                <div class="accordion-item mb-3 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#sec1">
+                                            <div class="d-flex justify-content-between w-100 me-3 align-items-center">
+                                                <span>Section 1: Introduction to Web Development</span>
+                                                <span class="small fw-normal text-muted">4 contents | 45m</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="sec1" class="accordion-collapse collapse show">
+                                        <div class="accordion-body p-0">
+                                            <div class="curriculum-item d-flex justify-content-between align-items-center p-3 border-bottom">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-play-circle text-accent fs-5"></i>
+                                                    <span class="fw-medium">1.1 Welcome to the Bootcamp</span>
+                                                </div>
+                                                <span class="small text-muted">05:20</span>
+                                            </div>
+                                            <div class="curriculum-item d-flex justify-content-between align-items-center p-3 border-bottom">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-play-circle text-accent fs-5"></i>
+                                                    <span class="fw-medium">1.2 How the web works</span>
+                                                </div>
+                                                <span class="small text-muted">12:45</span>
+                                            </div>
+                                            <div class="curriculum-item d-flex justify-content-between align-items-center p-3">
+                                                <div class="d-flex align-items-center gap-3 text-muted">
+                                                    <i class="bi bi-lock fs-5"></i>
+                                                    <span class="fw-medium">1.3 Setting up your environment</span>
+                                                </div>
+                                                <span class="small text-muted">15:30</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Section 2 -->
+                                <div class="accordion-item mb-3 border-0 shadow-sm rounded-4 overflow-hidden">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#sec2">
+                                            <div class="d-flex justify-content-between w-100 me-3 align-items-center">
+                                                <span>Section 2: HTML5 Foundations</span>
+                                                <span class="small fw-normal text-muted">6 contents | 1h 20m</span>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="sec2" class="accordion-collapse collapse">
+                                        <div class="accordion-body p-0">
+                                            <div class="curriculum-item d-flex justify-content-between align-items-center p-3 border-bottom">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <i class="bi bi-play-circle text-accent fs-5"></i>
+                                                    <span class="fw-medium">2.1 Semantic HTML Basics</span>
+                                                </div>
+                                                <span class="small text-muted">15:42</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Sidebar Card -->
+            <!-- Right Column: Sidebar (Sticky Style) -->
             <div class="col-lg-4">
-                <div class="card sticky-card border-0 shadow-lg overflow-hidden">
-                    <img src="assets/images/course_web_dev.png" class="card-img-top" alt="Course Thumbnail">
-                    <div class="card-body p-4 text-center">
-                        <div class="h2 fw-bold mb-3">$89.99</div>
-                        <a href="login.html?redirect=student/checkout.html" class="btn btn-primary w-100 btn-lg mb-3">Enroll Now</a>
-                        <p class="small text-muted mb-4">30-Day Money-Back Guarantee</p>
-                        
-                        <div class="text-start">
-                            <h6 class="fw-bold mb-3">This course includes:</h6>
-                            <ul class="list-unstyled d-grid gap-2 small">
-                                <li><i class="bi bi-display me-2"></i> 48 hours on-demand video</li>
-                                <li><i class="bi bi-file-earmark-arrow-down me-2"></i> 12 downloadable material</li>
-                                <li><i class="bi bi-infinity me-2"></i> Full lifetime access</li>
-                                <li><i class="bi bi-phone me-2"></i> Access on mobile and TV</li>
-                                <li><i class="bi bi-trophy me-2"></i> Certificate of completion</li>
-                            </ul>
+                <div class="sticky-top" style="top: 100px;">
+                    <div class="card p-4 shadow-lg border-0 rounded-4 overflow-hidden">
+                        <div class="text-center mb-4">
+                            <div class="h1 fw-bold text-primary mb-1">$89.99</div>
+                            <div class="text-muted text-decoration-line-through small mb-3">$179.99</div>
+                            <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2 fw-bold">50% OFF - LIMITED TIME</span>
                         </div>
+
+                        <a href="login.html?redirect=student/checkout.html" class="btn btn-primary btn-lg w-100 mb-3 py-3 rounded-3 fw-bold">Enroll Now</a>
+                        <p class="text-center text-muted small mb-4">30-Day Money-Back Guarantee</p>
+
+                        <hr class="my-4">
+
+                        <h6 class="fw-bold mb-3" style="color: var(--text-primary);">This course includes:</h6>
+                        <ul class="list-unstyled d-grid gap-3 small text-secondary mb-4">
+                            <li><i class="bi bi-play-circle-fill me-3 text-accent"></i>45 hours of on-demand video</li>
+                            <li><i class="bi bi-file-earmark-arrow-down-fill me-3 text-accent"></i>12 downloadable materials</li>
+                            <li><i class="bi bi-infinity me-3 text-accent"></i>Full lifetime access</li>
+                            <li><i class="bi bi-phone-fill me-3 text-accent"></i>Access on mobile & desktop</li>
+                            <li><i class="bi bi-award-fill me-3 text-accent"></i>Certificate of completion</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -213,14 +247,13 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white border-top py-5">
-        <div class="container text-center">
-            <p class="text-muted small">&copy; 2026 LMS Platform. All rights reserved.</p>
+    <footer class="site-footer bg-white border-top py-5 mt-5">
+        <div class="container px-4 text-center">
+            <p class="text-muted small mb-0">&copy; 2026 LMS Platform. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/role-switcher.js"></script>
 </body>
 </html>

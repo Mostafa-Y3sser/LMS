@@ -38,7 +38,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <!-- Guest: Home -->
+                    <li class="nav-item guest-only"><a class="nav-link" href="../index.html">Home</a></li>
+                    <!-- Logged in: Dashboard -->
+                    <li class="nav-item student-only d-none"><a class="nav-link" href="../student/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item instructor-only d-none"><a class="nav-link" href="../instructor/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item assistant-only d-none"><a class="nav-link" href="../assistant/dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
@@ -123,7 +128,7 @@
                             </div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li><a class="dropdown-item py-2" href="profile.html"><i class="bi bi-person me-2"></i>
+                            <li><a class="dropdown-item py-2" href="settings.html"><i class="bi bi-person me-2"></i>
                                     Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -147,7 +152,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="enrollments.html" class="menu-link">
+                    <a href="courses.html" class="menu-link">
                         <i class="bi bi-book-half"></i> Courses
                     </a>
                 </li>
@@ -157,20 +162,17 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="profile.html" class="menu-link">
+                    <a href="settings.html" class="menu-link">
                         <i class="bi bi-gear"></i> Settings
                     </a>
                 </li>
+                <li class="menu-item mt-auto pt-3">
+                    <hr class="mx-3 my-2 opacity-10">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
             </ul>
-            <div class="sidebar-footer">
-                <div class="user-info-brief">
-                    <div class="user-avatar-sm">MC</div>
-                    <div class="small">
-                        <div class="fw-bold">Maya Chen</div>
-                        <div style="font-size:12px;color:var(--text-muted)">Student</div>
-                    </div>
-                </div>
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -188,7 +190,7 @@
                             Keep it up and earn your next certificate!</p>
                     </div>
                     <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                        <a href="learn.html" class="btn btn-primary btn-sm">Continue Learning</a>
+                        <a href="watch-course.html" class="btn btn-primary btn-sm">Continue Learning</a>
                     </div>
                 </div>
             </div>
@@ -212,7 +214,7 @@
                             <i class="bi bi-check-circle"></i>
                         </div>
                         <div>
-                            <p class="stat-label">Completed</p>
+                            <p class="stat-label">Active</p>
                             <h3 class="stat-value">4</h3>
                         </div>
                     </div>
@@ -223,19 +225,8 @@
                             <i class="bi bi-clock-history"></i>
                         </div>
                         <div>
-                            <p class="stat-label">Pending</p>
+                            <p class="stat-label">Completed</p>
                             <h3 class="stat-value">2</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="stat-card">
-                        <div class="stat-icon bg-danger-light text-danger">
-                            <i class="bi bi-bell"></i>
-                        </div>
-                        <div>
-                            <p class="stat-label">Notifications</p>
-                            <h3 class="stat-value">3</h3>
                         </div>
                     </div>
                 </div>
@@ -256,7 +247,7 @@
                                 <span>65% Complete</span>
                                 <span>12/18 Contents</span>
                             </div>
-                            <a href="learn.html" class="btn btn-primary w-100">Continue</a>
+                            <a href="watch-course.html" class="btn btn-primary w-100">Continue</a>
                         </div>
                     </div>
                 </div>
@@ -272,7 +263,7 @@
                                 <span>40% Complete</span>
                                 <span>8/20 Contents</span>
                             </div>
-                            <a href="learn.html" class="btn btn-primary w-100">Continue</a>
+                            <a href="watch-course.html" class="btn btn-primary w-100">Continue</a>
                         </div>
                     </div>
                 </div>
@@ -321,3 +312,10 @@
 </body>
 
 </html>
+
+
+
+
+
+
+

@@ -162,3 +162,4 @@ function applyRoleUI(role) {
         el.classList.toggle('d-none', role !== 'assistant');
     });
 }
+

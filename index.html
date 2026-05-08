@@ -12,156 +12,7 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
-    <style>
-        /* ── Home-page only overrides ─────────────── */
-        .hero-section {
-            padding: 6rem 0 5rem;
-            background-color: var(--surface-color);
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-color);
-            background: var(--accent-light);
-            border-radius: var(--radius-pill);
-            padding: 4px 14px;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.01em;
-        }
-
-        .hero-title {
-            font-size: clamp(2.4rem, 5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            color: var(--text-primary);
-            margin-bottom: 1.25rem;
-        }
-
-        .hero-title .accent { color: var(--accent-color); }
-
-        .hero-lead {
-            font-size: 1.075rem;
-            color: var(--text-secondary);
-            max-width: 520px;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .hero-image-wrap {
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Stats bar */
-        .stats-bar {
-            background: var(--bg-color);
-            padding: 2.5rem 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .stat-num {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .stat-lbl {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Section header */
-        .section-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-label {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-        }
-
-        /* How it works */
-        .step-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius-lg);
-            background: var(--accent-light);
-            color: var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            margin: 0 auto 1.25rem;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: var(--bg-color);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 5rem 0;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-        }
-
-        /* Footer */
-        .site-footer {
-            background: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            padding: 3.5rem 0 2rem;
-        }
-
-        .footer-link {
-            font-size: 14px;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: var(--transition-base);
-        }
-        .footer-link:hover { color: var(--text-primary); }
-
-        .footer-heading {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            letter-spacing: 0.02em;
-        }
-
-        /* Course cards */
-        .course-card { transition: var(--transition-base); }
-        .course-card:hover { transform: translateY(-3px); }
-    </style>
+    <link rel="stylesheet" href="assets/css/pages.css">
 </head>
 
 <body>
@@ -178,14 +29,58 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <!-- Guest: Home -->
+                    <li class="nav-item guest-only"><a class="nav-link active" href="index.html">Home</a></li>
+                    <!-- Logged in: Dashboard -->
+                    <li class="nav-item student-only d-none"><a class="nav-link" href="student/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item instructor-only d-none"><a class="nav-link" href="instructor/dashboard.html">Dashboard</a></li>
+                    <li class="nav-item assistant-only d-none"><a class="nav-link" href="assistant/dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Browse Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                    <a href="login.html" class="btn btn-light">Log in</a>
-                    <a href="register.html" class="btn btn-primary">Get Started</a>
+                    <!-- Guest View -->
+                    <div class="guest-only d-flex gap-2">
+                        <a href="login.html" class="btn btn-light">Sign in</a>
+                        <a href="register.html" class="btn btn-primary">Create account</a>
+                    </div>
+                    <!-- Student View -->
+                    <div class="student-only d-none dropdown">
+                        <button class="btn d-flex align-items-center gap-2 border-0 p-0" type="button" data-bs-toggle="dropdown">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 35px; height: 35px; background-color: var(--accent-color);">ST</div>
+                            <span class="fw-bold d-none d-md-block" style="color: var(--text-primary); font-size: 0.9rem;">Student</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li><a class="dropdown-item py-2" href="student/dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" href="login.html" onclick="localStorage.setItem('lms_role', 'guest');"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Instructor View -->
+                    <div class="instructor-only d-none dropdown">
+                        <button class="btn d-flex align-items-center gap-2 border-0 p-0" type="button" data-bs-toggle="dropdown">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 35px; height: 35px; background-color: var(--accent-color);">IN</div>
+                            <span class="fw-bold d-none d-md-block" style="color: var(--text-primary); font-size: 0.9rem;">Instructor</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li><a class="dropdown-item py-2" href="instructor/dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" href="login.html" onclick="localStorage.setItem('lms_role', 'guest');"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Assistant View -->
+                    <div class="assistant-only d-none dropdown">
+                        <button class="btn d-flex align-items-center gap-2 border-0 p-0" type="button" data-bs-toggle="dropdown">
+                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center fw-bold" style="width: 35px; height: 35px; background-color: var(--accent-color);">AS</div>
+                            <span class="fw-bold d-none d-md-block" style="color: var(--text-primary); font-size: 0.9rem;">Assistant</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                            <li><a class="dropdown-item py-2" href="assistant/dashboard.html"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item py-2 text-danger" href="login.html" onclick="localStorage.setItem('lms_role', 'guest');"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,10 +91,6 @@
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 animate-fade-in">
-                    <div class="hero-eyebrow">
-                        <i class="bi bi-lightning-charge-fill"></i>
-                        5,000+ courses available
-                    </div>
                     <h1 class="hero-title">
                         The smarter way<br>to <span class="accent">learn anything.</span>
                     </h1>
@@ -207,8 +98,7 @@
                         Start, switch, or advance your career with expert-led courses, professional certificates, and a community of learners.
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
-                        <a href="register.html" class="btn btn-primary btn-lg">Get Started Free</a>
-                        <a href="courses.html" class="btn btn-light btn-lg">Browse Courses</a>
+                        <a href="courses.html" class="btn btn-primary btn-lg px-5">Browse Courses</a>
                     </div>
                 </div>
                 <div class="col-lg-6 animate-fade-in" style="animation-delay:0.15s">
@@ -220,37 +110,14 @@
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="row g-4 text-center">
-                <div class="col-6 col-md-3">
-                    <div class="stat-num">15k+</div>
-                    <div class="stat-lbl">Active Students</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-num">600+</div>
-                    <div class="stat-lbl">Courses</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-num">120+</div>
-                    <div class="stat-lbl">Instructors</div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="stat-num">98%</div>
-                    <div class="stat-lbl">Satisfaction Rate</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Popular Courses -->
+    <!-- Featured Courses -->
     <section class="section-padding">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-end section-header">
+            <div class="d-flex justify-content-between align-items-end mb-4 section-header">
                 <div>
                     <div class="section-label">Featured</div>
-                    <h2 class="section-title mb-1">Popular Courses</h2>
+                    <h2 class="section-title mb-1">Featured Courses</h2>
                     <p class="text-muted mb-0" style="font-size:14px">Our most enrolled courses this month.</p>
                 </div>
                 <a href="courses.html" class="btn btn-light btn-sm d-none d-md-inline-flex align-items-center gap-1">
@@ -340,8 +207,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="step-icon"><i class="bi bi-trophy"></i></div>
-                    <h5 class="fw-semibold mb-2" style="color:var(--text-primary)">3. Learn & Earn</h5>
-                    <p class="text-muted mb-0" style="font-size:14px">Watch contents, complete assignments, and earn certificates.</p>
+                    <h5 class="fw-semibold mb-2" style="color:var(--text-primary)">3. Grow in your career path</h5>
+                    <p class="text-muted mb-0" style="font-size:14px">Grow your career with new skills and knowledge.</p>
                 </div>
             </div>
         </div>
@@ -353,35 +220,31 @@
             <h2 class="cta-title">Ready to start learning?</h2>
             <p class="text-muted mb-4" style="font-size:15px">Join thousands of students building their careers today.</p>
             <div class="d-flex gap-2 justify-content-center flex-wrap">
-                <a href="register.html" class="btn btn-primary btn-lg px-5">Create Free Account</a>
-                <a href="courses.html" class="btn btn-light btn-lg px-5">Explore Courses</a>
+                <a href="register.html" class="btn btn-primary btn-lg px-5">Create account</a>
+                <a href="login.html" class="btn btn-light btn-lg px-5">Sign in</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer bg-white border-top py-5 mt-auto">
         <div class="container">
             <div class="row g-4 mb-4">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <a class="d-flex align-items-center gap-2 mb-3 text-decoration-none" href="index.html">
                         <i class="bi bi-mortarboard-fill" style="color:var(--accent-color);font-size:1.2rem"></i>
                         <span style="font-weight:700;color:var(--text-primary);font-size:1rem">LMS Platform</span>
                     </a>
-                    <p style="font-size:14px;color:var(--text-muted);max-width:280px;line-height:1.6">Empowering learners worldwide with accessible, high-quality education.</p>
+                    <p style="font-size:14px;color:var(--text-muted);max-width:280px;line-height:1.6;margin-bottom:1rem;">Empowering learners worldwide with accessible, high-quality education.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-muted text-decoration-none fs-5"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-muted text-decoration-none fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted text-decoration-none fs-5"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-muted text-decoration-none fs-5"><i class="bi bi-github"></i></a>
+                    </div>
                 </div>
-                <div class="col-6 col-lg-2 ms-lg-auto">
-                    <div class="footer-heading">Platform</div>
-                    <a href="courses.html" class="footer-link">Browse Courses</a>
-                    <a href="#" class="footer-link">Learning Paths</a>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <div class="footer-heading">Company</div>
-                    <a href="#" class="footer-link">About Us</a>
-                    <a href="contact.html" class="footer-link">Contact</a>
-                </div>
-                <div class="col-lg-3">
-                    <div class="footer-heading">Stay Updated</div>
+                <div class="col-lg-4 ms-lg-auto">
+                    <div class="footer-heading fw-bold mb-3" style="color:var(--text-primary);">Stay Updated</div>
                     <div class="input-group">
                         <input type="email" class="form-control" placeholder="Your email">
                         <button class="btn btn-primary" type="button">Join</button>
@@ -400,3 +263,10 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
