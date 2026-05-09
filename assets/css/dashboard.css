@@ -293,7 +293,7 @@
 .mini-course-thumb {
     width: 100px;
     height: 60px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     object-fit: cover;
     background: var(--surface-dim);
 }
@@ -307,7 +307,7 @@
     color: var(--warning-color);
     background: var(--warning-light);
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     font-weight: 600;
 }
 
@@ -328,5 +328,5 @@
     padding: 1rem;
     background: #fff;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-base);
 }

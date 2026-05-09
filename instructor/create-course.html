@@ -197,11 +197,13 @@
                             <div class="col-lg-8">
                                 <div class="mb-4">
                                     <label class="form-label">Title</label>
-                                    <input type="text" class="form-control" placeholder="e.g. Advanced Photography Masterclass">
+                                    <input type="text" class="form-control" placeholder="e.g. Advanced Photography Masterclass" required>
+                                    <div class="invalid-feedback">Please provide a course title.</div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Short Description</label>
-                                    <textarea class="form-control" rows="2" placeholder="A brief catchline for the course…"></textarea>
+                                    <textarea class="form-control" rows="2" placeholder="A brief catchline for the course…" required></textarea>
+                                    <div class="invalid-feedback">Short description is required.</div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Full Description</label>
@@ -222,7 +224,8 @@
 
                                 <div class="mb-4">
                                     <label class="form-label">Price ($)</label>
-                                    <input type="number" class="form-control" placeholder="0.00 for free">
+                                    <input type="number" class="form-control" placeholder="0.00 for free" required>
+                                    <div class="invalid-feedback">Please set a price (0 for free).</div>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">Course Thumbnail</label>
