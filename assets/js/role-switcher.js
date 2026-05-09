@@ -139,27 +139,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function applyRoleUI(role) {
-    // This function can be used to hide/show elements based on role
-    const instructorElements = document.querySelectorAll('.instructor-only');
-    const studentElements = document.querySelectorAll('.student-only');
-    const guestElements = document.querySelectorAll('.guest-only');
-    const assistantElements = document.querySelectorAll('.assistant-only');
+    const allRoleElements = document.querySelectorAll('.instructor-only, .student-only, .guest-only, .assistant-only');
 
-    // Show/hide based on role
-    instructorElements.forEach(el => {
-        el.classList.toggle('d-none', role !== 'instructor');
-    });
-    
-    studentElements.forEach(el => {
-        el.classList.toggle('d-none', role !== 'student');
-    });
-    
-    guestElements.forEach(el => {
-        el.classList.toggle('d-none', role !== 'guest');
-    });
-    
-    assistantElements.forEach(el => {
-        el.classList.toggle('d-none', role !== 'assistant');
+    allRoleElements.forEach(el => {
+        let shouldShow = false;
+        if (el.classList.contains('instructor-only') && role === 'instructor') shouldShow = true;
+        if (el.classList.contains('student-only') && role === 'student') shouldShow = true;
+        if (el.classList.contains('guest-only') && role === 'guest') shouldShow = true;
+        if (el.classList.contains('assistant-only') && role === 'assistant') shouldShow = true;
+        
+        el.classList.toggle('d-none', !shouldShow);
     });
 }
 
