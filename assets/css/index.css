@@ -1,6 +1,5 @@
 /* index.css - Core Design Tokens */
 
-@import url("avatars.css");
 @import url("footer.css");
 
 :root {
@@ -10,6 +9,9 @@
     --accent-color: #3b7dd8;        /* Soft blue — interactive elements */
     --accent-light: #eef4fd;        /* Tinted blue — icon backgrounds, tags */
     --accent-hover: #2f6bbf;        /* Slightly deeper blue — button hover */
+
+    --secondary-color: #6366f1;     /* Indigo — for secondary accents */
+    --secondary-light: #eef2ff;
 
     /* Status Colors — muted tones */
     --success-color: #34a87a;
