@@ -32,7 +32,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item instructor-only"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
                     <div class="dropdown">
@@ -189,6 +188,8 @@
                     <div class="col-md-auto ms-auto">
                         <select class="form-select" style="min-width: 160px;">
                             <option selected>Sort By</option>
+                            <option>Newest First</option>
+                            <option>Oldest First</option>
                             <option>Alphabetical (A-Z)</option>
                             <option>Alphabetical (Z-A)</option>
                             <option>Price (Low to High)</option>
@@ -198,73 +199,69 @@
                 </div>
             </div>
 
-            <!-- Recently Added Courses -->
-            <div class="mb-4 animate-fade-in">
-                <h2 class="h5 fw-bold mb-3">Recently Added Courses</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card border-0 shadow-sm h-100 overflow-hidden">
-                            <div class="position-relative">
-                                <img src="../assets/images/course_web_dev.png" class="card-img-top" style="height: 140px; object-fit: cover;">
-                                <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm">Just Now</span>
+            <!-- Course Grid -->
+            <div class="row g-4 animate-fade-in">
+                <!-- Course Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card course-card border-0 shadow-sm h-100">
+                        <img src="../assets/images/course_web_dev.png" class="course-card-img" style="height: 160px;" alt="Web Dev">
+                        <div class="course-card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="course-title mb-0">Full-Stack Web Dev</h5>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill px-2">1,240 students</span>
                             </div>
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <h6 class="fw-bold mb-0">Advanced Photography Masterclass</h6>
-                                </div>
-                                <div class="d-flex align-items-center gap-2 mb-3">
-                                    <div class="user-avatar-sm" style="width: 24px; height: 24px; font-size: 10px;">SJ</div>
-                                    <span class="text-muted small">Prof. Sarah Johnson</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$129.99</span>
-                                    <div class="d-flex gap-2">
-                                        <button class="btn btn-light btn-sm" onclick="window.location.href='course-detail.html'" title="View Details"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteCourse('Advanced Photography Masterclass')" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
+                            <p class="text-muted small mb-3">Prof. Sarah Johnson</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-primary">$89.99</span>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-light btn-sm shadow-sm" onclick="window.location.href='course-detail.html'" title="View Details"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm shadow-sm" onclick="confirmDeleteCourse('Full-Stack Web Dev')" title="Delete"><i class="bi bi-trash"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card border-0 shadow-sm animate-fade-in">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="bg-light text-muted small text-uppercase">
-                            <tr>
-                                <th class="ps-4" style="width: 70%">Course</th>
-                                <th style="width: 10%">Price</th>
-                                <th style="width: 10%">Students</th>
-                                <th class="text-end pe-4" style="width: 10%">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="ps-4">
-                                    <div class="d-flex align-items-center">
-                                        <img src="../assets/images/course_web_dev.png" class="rounded me-3" style="width: 50px; height: 35px; object-fit: cover;">
-                                        <div>
-                                            <div class="fw-bold">Full-Stack Web Dev</div>
-                                            <div class="text-muted small">Prof. Sarah Johnson</div>
-                                        </div>
-                                    </div>
-                                </td>
+                <!-- Course Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card course-card border-0 shadow-sm h-100">
+                        <img src="../assets/images/course_ui_ux.png" class="course-card-img" style="height: 160px;" alt="UI UX">
+                        <div class="course-card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="course-title mb-0">UI/UX Masterclass</h5>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill px-2">850 students</span>
+                            </div>
+                            <p class="text-muted small mb-3">Prof. Sarah Johnson</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-primary">$74.99</span>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-light btn-sm shadow-sm" onclick="window.location.href='course-detail.html'" title="View Details"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm shadow-sm" onclick="confirmDeleteCourse('UI/UX Masterclass')" title="Delete"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-                                <td class="small fw-bold">$89.99</td>
-                                <td class="small">1,240</td>
-
-                                <td class="text-end pe-4">
-                                    <div class="btn-group">
-                                        <button class="btn btn-light btn-sm" onclick="window.location.href='course-detail.html'" title="View Details"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteCourse('Full-Stack Web Dev')" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Course Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card course-card border-0 shadow-sm h-100">
+                        <img src="../assets/images/course_data_science.png" class="course-card-img" style="height: 160px;" alt="Data Science">
+                        <div class="course-card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="course-title mb-0">AI & Machine Learning</h5>
+                                <span class="badge bg-primary-subtle text-primary rounded-pill px-2">420 students</span>
+                            </div>
+                            <p class="text-muted small mb-3">Prof. Sarah Johnson</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-primary">$129.99</span>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-light btn-sm shadow-sm" onclick="window.location.href='course-detail.html'" title="View Details"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm shadow-sm" onclick="confirmDeleteCourse('AI & Machine Learning')" title="Delete"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

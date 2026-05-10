@@ -31,7 +31,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item instructor-only"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
                     <div class="dropdown">
@@ -171,40 +170,121 @@
             <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
                 <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">All Enrollments</h1>
             </div>
-            <div class="card border-0 shadow-sm animate-fade-in">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="bg-light text-muted small text-uppercase">
-                            <tr>
-                                <th class="ps-4">Student</th>
-                                <th>Course</th>
-                                <th>Enroll Date</th>
-                                <th>Progress</th>
-                                <th class="text-end pe-4">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="ps-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-avatar-sm me-2">MC</div>
-                                        <span class="small fw-bold">Maya Chen</span>
-                                    </div>
-                                </td>
-                                <td class="small">Full-Stack Web Development</td>
-                                <td class="small text-muted">Jan 15, 2026</td>
-                                <td>
-                                    <div class="progress" style="height: 6px; width: 100px;">
-                                        <div class="progress-bar" style="width: 65%;"></div>
-                                    </div>
-                                    <span class="small text-muted" style="font-size: 0.65rem;">65%</span>
-                                </td>
-                                <td class="text-end pe-4">
-                                    <span class="badge bg-success-subtle text-success rounded-pill">Active</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Filter & Search Bar -->
+            <div class="card border-0 shadow-sm p-3 mb-4 animate-fade-in">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control border-start-0" placeholder="Search students or courses...">
+                        </div>
+                    </div>
+                    <div class="col-md-auto ms-auto">
+                        <select class="form-select" style="min-width: 160px;">
+                            <option selected>Sort By</option>
+                            <option>Newest First</option>
+                            <option>Oldest First</option>
+                            <option>Progress: High to Low</option>
+                            <option>Progress: Low to High</option>
+                            <option>Student Name (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enrollment Grid -->
+            <div class="row g-4 animate-fade-in">
+                <!-- Enrollment Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="user-avatar-sm me-3" style="width: 45px; height: 45px; font-size: 1rem;">MC</div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Maya Chen</h6>
+                                    <p class="text-muted small mb-0">Enrolled Jan 15, 2026</p>
+                                </div>
+                                <span class="badge bg-success-subtle text-success rounded-pill ms-auto">Active</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="text-muted small mb-1">Course</div>
+                                <div class="fw-bold text-primary">Full-Stack Web Development</div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small text-muted">Course Progress</span>
+                                    <span class="small fw-bold">65%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrollment Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="user-avatar-sm me-3" style="width: 45px; height: 45px; font-size: 1rem;">JS</div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">John Smith</h6>
+                                    <p class="text-muted small mb-0">Enrolled Feb 02, 2026</p>
+                                </div>
+                                <span class="badge bg-success-subtle text-success rounded-pill ms-auto">Active</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="text-muted small mb-1">Course</div>
+                                <div class="fw-bold text-primary">UI/UX Masterclass</div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small text-muted">Course Progress</span>
+                                    <span class="small fw-bold">12%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrollment Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="user-avatar-sm me-3" style="width: 45px; height: 45px; font-size: 1rem;">RB</div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Robert Brown</h6>
+                                    <p class="text-muted small mb-0">Enrolled Dec 10, 2025</p>
+                                </div>
+                                <span class="badge bg-info-subtle text-info rounded-pill ms-auto">Completed</span>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="text-muted small mb-1">Course</div>
+                                <div class="fw-bold text-primary">AI & Machine Learning</div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small text-muted">Course Progress</span>
+                                    <span class="small fw-bold">100%</span>
+                                </div>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-success" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

@@ -35,13 +35,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto ms-lg-5 gap-lg-1">
-                    <li class="nav-item guest-only"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item student-only d-none"><a class="nav-link" href="../student/dashboard.html">Dashboard</a></li>
-                    <li class="nav-item instructor-only d-none"><a class="nav-link" href="../instructor/dashboard.html">Dashboard</a></li>
-                    <li class="nav-item assistant-only d-none"><a class="nav-link" href="../assistant/dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../courses.html">Browse Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
                     <div class="dropdown">
@@ -172,6 +165,7 @@
                             <thead style="background-color: var(--bg-color);">
                                 <tr>
                                     <th class="ps-4">Student</th>
+                                    <th>Course & Module</th>
                                     <th>Assignment</th>
                                     <th>Status</th>
                                     <th class="text-end pe-4">Action</th>
@@ -179,8 +173,17 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="ps-4">Maya Chen</td>
-                                    <td>Module 2 Project</td>
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-avatar-sm me-2">MC</div>
+                                            <span class="small fw-bold">Maya Chen</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="fw-bold small">Full-Stack Web Development</div>
+                                        <div class="text-muted" style="font-size: 0.7rem;">Module 2</div>
+                                    </td>
+                                    <td class="small">Final Project</td>
                                     <td><span class="badge bg-warning-subtle text-warning rounded-pill">Pending</span></td>
                                     <td class="text-end pe-4"><a href="submissions.html" class="btn btn-light btn-sm">Grade</a></td>
                                 </tr>
