@@ -16,10 +16,8 @@ function viewUserDetails(name, role, initials, email, assistantId = '', permissi
     roleBadge.className = `badge badge-role badge-${role.toLowerCase()}`;
 
     const isAssistant = role.toUpperCase() === 'ASSISTANT';
-    const studentInfo = document.getElementById('student-info');
     const assistantInfo = document.getElementById('assistant-info');
     
-    if (studentInfo) studentInfo.classList.toggle('d-none', isAssistant);
     if (assistantInfo) assistantInfo.classList.toggle('d-none', !isAssistant);
 
     if (isAssistant) {

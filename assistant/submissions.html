@@ -14,7 +14,6 @@
 </head>
 <body>
 
-    <!-- Global Dashboard Navbar -->
     <nav class="navbar navbar-expand-lg navbar-public sticky-top" style="z-index: 1040;">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center">
@@ -47,13 +46,41 @@
                             <li>
                                 <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
                                     <div class="d-flex align-items-start">
-                                        <div class="stat-icon me-3">
+                                        <div class="stat-icon me-3 bg-primary bg-opacity-10 text-primary" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                             <i class="bi bi-megaphone"></i>
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="mb-1 fw-bold" style="font-size: 13px;">New Course Launched!</h6>
                                             <p class="text-secondary mb-1" style="font-size: 11px;">Advanced AI & Machine Learning course is now available for enrollment.</p>
                                             <span class="text-muted" style="font-size: 10px;">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3 bg-success bg-opacity-10 text-success" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Assignment Graded</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your Module 2 project has been graded. Score: 85/100.</p>
+                                            <span class="text-muted" style="font-size: 10px;">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-3" href="#" style="white-space: normal;">
+                                    <div class="d-flex align-items-start">
+                                        <div class="stat-icon me-3 bg-info bg-opacity-10 text-info" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <i class="bi bi-credit-card"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Payment Successful</h6>
+                                            <p class="text-secondary mb-1" style="font-size: 11px;">Your payment for "Full-Stack Web Development" was successful.</p>
+                                            <span class="text-muted" style="font-size: 10px;">Yesterday</span>
                                         </div>
                                     </div>
                                 </a>
@@ -70,7 +97,6 @@
                             <div class="user-avatar-sm" style="width: 32px; height: 32px;">SA</div>
                             <div class="text-start d-none d-md-block">
                                 <div class="fw-bold small" style="line-height: 1; color: var(--text-primary);">Sarah Adams</div>
-
                             </div>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -91,12 +117,12 @@
             <ul class="sidebar-menu">
                 <li class="menu-item">
                     <a href="dashboard.html" class="menu-link">
-                        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+                        <i class="bi bi-speedometer2"></i> Dashboard
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="submissions.html" class="menu-link active">
-                        <i class="bi bi-file-earmark-text"></i> Submissions
+                        <i class="bi bi-file-earmark-check"></i> Submissions
                     </a>
                 </li>
                 <li class="menu-item">
@@ -128,13 +154,14 @@
                         </div>
                         <div class="flex-grow-1 overflow-y-auto bg-light">
                             
-                            <!-- Course Header -->
-                            <div class="px-3 py-2 bg-white border-bottom fw-bold text-primary" style="font-size: 0.8rem;">
-                                Full-Stack Web Development
-                            </div>
-                            <!-- Module/Assignment Group -->
-                            <div class="px-3 py-2 bg-light border-bottom text-muted" style="font-size: 0.75rem;">
-                                <span class="fw-bold text-dark">Module 2:</span> Final Project
+                            <!-- Course & Module Breadcrumb -->
+                            <div class="px-3 py-2 bg-white border-bottom">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb mb-0" style="font-size: 0.7rem; --bs-breadcrumb-divider: '›';">
+                                        <li class="breadcrumb-item text-muted">Full-Stack Web Development</li>
+                                        <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Module 2</li>
+                                    </ol>
+                                </nav>
                             </div>
                             <!-- Student List -->
                             <div class="p-3 border-bottom bg-accent-light position-relative transition-base" style="cursor: pointer;">

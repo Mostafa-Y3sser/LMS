@@ -56,7 +56,7 @@
                             <li>
                                 <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
                                     <div class="d-flex align-items-start">
-                                        <div class="stat-icon me-3">
+                                        <div class="stat-icon me-3 bg-primary bg-opacity-10 text-primary" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                             <i class="bi bi-megaphone"></i>
                                         </div>
                                         <div class="flex-grow-1">
@@ -70,7 +70,7 @@
                             <li>
                                 <a class="dropdown-item py-3 border-bottom" href="#" style="white-space: normal;">
                                     <div class="d-flex align-items-start">
-                                        <div class="stat-icon me-3">
+                                        <div class="stat-icon me-3 bg-success bg-opacity-10 text-success" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                             <i class="bi bi-award"></i>
                                         </div>
                                         <div class="flex-grow-1">
@@ -84,11 +84,11 @@
                             <li>
                                 <a class="dropdown-item py-3" href="#" style="white-space: normal;">
                                     <div class="d-flex align-items-start">
-                                        <div class="stat-icon me-3">
+                                        <div class="stat-icon me-3 bg-info bg-opacity-10 text-info" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                                             <i class="bi bi-credit-card"></i>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h6 class="mb-1" style="font-size: 13px;">Payment Successful</h6>
+                                            <h6 class="mb-1 fw-bold" style="font-size: 13px;">Payment Successful</h6>
                                             <p class="text-secondary mb-1" style="font-size: 11px;">Your payment for "Full-Stack Web Development" was successful.</p>
                                             <span class="text-muted" style="font-size: 10px;">Yesterday</span>
                                         </div>
@@ -128,17 +128,17 @@
             <ul class="sidebar-menu">
                 <li class="menu-item">
                     <a href="dashboard.html" class="menu-link">
-                        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+                        <i class="bi bi-speedometer2"></i> Dashboard
                     </a>
                 </li>
-                                <li class="menu-item">
+                <li class="menu-item">
                     <a href="courses.html" class="menu-link active">
-                        <i class="bi bi-book-half"></i> Courses
+                        <i class="bi bi-book"></i> Courses
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="purchase-history.html" class="menu-link">
-                        <i class="bi bi-receipt"></i> Purchase History
+                        <i class="bi bi-credit-card"></i> Purchase History
                     </a>
                 </li>
                 <li class="menu-item">
@@ -146,8 +146,7 @@
                         <i class="bi bi-gear"></i> Settings
                     </a>
                 </li>
-                <li class="menu-item mt-auto pt-3">
-                    <hr class="mx-3 my-2 opacity-10">
+                <li class="menu-item mt-auto border-top pt-2">
                     <a href="../login.html" class="menu-link text-danger">
                         <i class="bi bi-box-arrow-right"></i> Logout
                     </a>
@@ -157,13 +156,25 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
-                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Courses</h1>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 animate-fade-in">
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">My Courses</h1>
+                <div class="d-flex gap-2">
+                    <div class="input-group" style="max-width: 250px;">
+                        <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control border-start-0 ps-0 shadow-none" style="font-size: 0.9rem;" placeholder="Search my courses...">
+                    </div>
+                    <select class="form-select border-0 bg-white shadow-sm fw-semibold" style="width: 160px; font-size: 0.9rem;">
+                        <option selected>Sort By</option>
+                        <option>Newest First</option>
+                        <option>Progress: High to Low</option>
+                        <option>Name (A-Z)</option>
+                    </select>
+                </div>
             </div>
             <div class="mb-4 animate-fade-in">
                 <ul class="nav nav-pills gap-2" id="enrollmentTabs" role="tablist">
                     <li class="nav-item">
-                        <button class="nav-link active rounded-pill px-4" data-bs-toggle="pill" type="button">All</button>
+                        <button class="nav-link active rounded-pill px-4" data-bs-toggle="pill" type="button">All Courses</button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link rounded-pill px-4" data-bs-toggle="pill" type="button">Active</button>
