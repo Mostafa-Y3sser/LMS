@@ -1,17 +1,17 @@
-/* index.css - Core Design Tokens */
+﻿/* index.css - Core Design Tokens */
 
 :root {
-    /* Core Colors — calm, minimal blue palette */
-    --primary-color: #1a2b4a;       /* Deep navy — used sparingly for text & brand */
-    --primary-light: #2d4272;       /* Mid navy — hover states */
-    --accent-color: #3b7dd8;        /* Soft blue — interactive elements */
-    --accent-light: #eef4fd;        /* Tinted blue — icon backgrounds, tags */
-    --accent-hover: #2f6bbf;        /* Slightly deeper blue — button hover */
+    /* Core Colors â€” calm, minimal blue palette */
+    --primary-color: #1a2b4a;       /* Deep navy â€” used sparingly for text & brand */
+    --primary-light: #2d4272;       /* Mid navy â€” hover states */
+    --accent-color: #3b7dd8;        /* Soft blue â€” interactive elements */
+    --accent-light: #eef4fd;        /* Tinted blue â€” icon backgrounds, tags */
+    --accent-hover: #2f6bbf;        /* Slightly deeper blue â€” button hover */
 
-    --secondary-color: #6366f1;     /* Indigo — for secondary accents */
+    --secondary-color: #6366f1;     /* Indigo â€” for secondary accents */
     --secondary-light: #eef2ff;
 
-    /* Status Colors — muted tones */
+    /* Status Colors â€” muted tones */
     --success-color: #34a87a;
     --success-light: #edfbf5;
     --warning-color: #d97706;
@@ -21,7 +21,7 @@
 
     /* Surfaces & Backgrounds */
     --bg-color: #f4f6f9;            /* Very light cool gray page bg */
-    --surface-color: #ffffff;       /* Pure white — cards, panels */
+    --surface-color: #ffffff;       /* Pure white â€” cards, panels */
     --surface-dim: #eef0f3;         /* Subtle hover / alternate rows */
     --overlay-color: rgba(26, 43, 74, 0.7);
 
@@ -38,7 +38,7 @@
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
 
-    /* Shadows — lighter & softer */
+    /* Shadows â€” lighter & softer */
     --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
     --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
     --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
@@ -55,7 +55,7 @@
     --transition-base: all 0.18s ease;
 }
 
-/* ── Base ─────────────────────────────────────────── */
+/* â”€â”€ Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
@@ -93,7 +93,7 @@ small, .small {
 .text-secondary { color: var(--text-secondary) !important; }
 .text-muted     { color: var(--text-muted)     !important; }
 
-/* ── Links ────────────────────────────────────────── */
+/* â”€â”€ Links â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 a {
     text-decoration: none;
     color: var(--accent-color);
@@ -101,7 +101,7 @@ a {
 }
 a:hover { color: var(--accent-hover); }
 
-/* ── Buttons ──────────────────────────────────────── */
+/* â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn {
     font-size: 14px;
     font-weight: 500;
@@ -153,7 +153,7 @@ a:hover { color: var(--accent-hover); }
     background-color: var(--border-color);
 }
 
-/* ── Badges ───────────────────────────────────────── */
+/* â”€â”€ Badges â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .badge {
     font-size: 12px;
     font-weight: 500;
@@ -162,7 +162,7 @@ a:hover { color: var(--accent-hover); }
     border-radius: var(--radius-sm);
 }
 
-/* ── Cards ────────────────────────────────────────── */
+/* â”€â”€ Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card {
     border: none;
     border-radius: var(--radius-lg);
@@ -174,7 +174,7 @@ a:hover { color: var(--accent-hover); }
     box-shadow: var(--shadow-md);
 }
 
-/* ── Dropdowns ────────────────────────────────────── */
+/* â”€â”€ Dropdowns â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .dropdown-menu {
     border-radius: var(--radius-lg) !important;
     box-shadow: var(--shadow-lg) !important;
@@ -187,7 +187,7 @@ a:hover { color: var(--accent-hover); }
     font-size: 14px;
 }
 
-/* ── Form Controls ────────────────────────────────── */
+/* â”€â”€ Form Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .form-control, .form-select {
     border-radius: var(--radius-base);
     border: 1px solid var(--border-color);
@@ -334,7 +334,7 @@ a:hover { color: var(--accent-hover); }
     font-weight: 600;
 }
 
-/* ── layout.css ─────────────────────────────────────────── */
+/* â”€â”€ layout.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Global Layout & Container Styles */
 .dashboard-container {
@@ -369,7 +369,7 @@ a:hover { color: var(--accent-hover); }
     background-color: var(--bg-color);
 }
 
-/* ── navbars.css ─────────────────────────────────────────── */
+/* â”€â”€ navbars.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Navbar Styles */
 .navbar-public {
@@ -397,7 +397,7 @@ a:hover { color: var(--accent-hover); }
     color: var(--secondary-color);
 }
 
-/* ── sidebar.css ─────────────────────────────────────────── */
+/* â”€â”€ sidebar.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* sidebar.css - Dashboard Sidebar Styles */
 
@@ -523,7 +523,7 @@ a:hover { color: var(--accent-hover); }
     }
 }
 
-/* ── footer.css ─────────────────────────────────────────── */
+/* â”€â”€ footer.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Footer Styles */
 .site-footer {
@@ -552,7 +552,7 @@ a:hover { color: var(--accent-hover); }
     letter-spacing: 0.02em;
 }
 
-/* ── components.css ─────────────────────────────────────────── */
+/* â”€â”€ components.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* components.css - Reusable Component Styles */
 
@@ -639,7 +639,7 @@ a:hover { color: var(--accent-hover); }
     border-left: none;
 }
 
-/* ── stats-cards.css ─────────────────────────────────────────── */
+/* â”€â”€ stats-cards.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Stats Cards Styles */
 .stat-card {
@@ -676,7 +676,7 @@ a:hover { color: var(--accent-hover); }
     margin-bottom: 0;
 }
 
-/* ── avatars.css ─────────────────────────────────────────── */
+/* â”€â”€ avatars.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Avatars & Profile Styles */
 .avatar-lg {
@@ -737,7 +737,7 @@ a:hover { color: var(--accent-hover); }
     font-weight: 600;
 }
 
-/* ── empty-states.css ─────────────────────────────────────────── */
+/* â”€â”€ empty-states.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Empty States Stylesheet */
 
@@ -800,7 +800,7 @@ a:hover { color: var(--accent-hover); }
     }
 }
 
-/* ── auth.css ─────────────────────────────────────────── */
+/* â”€â”€ auth.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Auth Pages Styles */
 .auth-wrap {
@@ -817,11 +817,11 @@ a:hover { color: var(--accent-hover); }
     animation: fadeIn 0.4s ease-out;
 }
 
-/* ── dashboard.css ─────────────────────────────────────────── */
+/* â”€â”€ dashboard.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* dashboard.css - Dashboard & Editor Page-Specific Styles */
 
-/* â”€â”€ Watch Course Page (student/watch-course.html) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Watch Course Page (student/watch-course.html) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .watch-container {
     padding: 2rem 0;
 }
@@ -1012,7 +1012,7 @@ a:hover { color: var(--accent-hover); }
     font-size: 1.1rem;
 }
 
-/* â”€â”€ Edit Course â€” Assistant â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Edit Course Ã¢â‚¬â€ Assistant Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .edit-content-item { transition: background 0.15s; }
 .edit-content-item:hover { background-color: #f8f9fa; }
 .nav-tabs .nav-link { color: #6c757d; }
@@ -1022,7 +1022,7 @@ a:hover { color: var(--accent-hover); }
     border-bottom: 2px solid var(--primary-color, #6c63ff);
 }
 
-/* â”€â”€ Edit Course â€” Assistant â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Edit Course Ã¢â‚¬â€ Assistant Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .edit-content-item { transition: background 0.15s; }
 .edit-content-item:hover { background-color: #f8f9fa; }
 .nav-tabs .nav-link { color: #6c757d; }
@@ -1031,7 +1031,7 @@ a:hover { color: var(--accent-hover); }
     font-weight: 700;
     border-bottom: 2px solid var(--primary-color, #6c63ff);
 }
-/* â”€â”€ Purchase History (student/purchase-history.html) â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Purchase History (student/purchase-history.html) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .transaction-accordion .accordion-item {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg) !important;
@@ -1152,7 +1152,7 @@ a:hover { color: var(--accent-hover); }
     border-radius: var(--radius-base);
 }
 
-/* ── course-detail.css ─────────────────────────────────────────── */
+/* â”€â”€ course-detail.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Course Detail Page Styles */
 .course-hero-dashboard {
@@ -1197,7 +1197,7 @@ a:hover { color: var(--accent-hover); }
     padding: 0.35rem 0; 
 }
 
-/* ── curriculum.css ─────────────────────────────────────────── */
+/* â”€â”€ curriculum.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Curriculum & Content List Styles */
 .curriculum-item {
@@ -1262,7 +1262,7 @@ a:hover { color: var(--accent-hover); }
     font-weight: 600;
 }
 
-/* ── course-builder.css ─────────────────────────────────────────── */
+/* â”€â”€ course-builder.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Course Builder & Editor Styles */
 .tab-step { display: none; }
@@ -1352,7 +1352,7 @@ a:hover { color: var(--accent-hover); }
     margin-bottom: 1rem;
 }
 
-/* ── article-editor.css ─────────────────────────────────────────── */
+/* â”€â”€ article-editor.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Article Editor Styles */
 .editor-container {
@@ -1470,7 +1470,7 @@ a:hover { color: var(--accent-hover); }
     font-size: 0.7rem;
 }
 
-/* ── rich-editor.css ─────────────────────────────────────────── */
+/* â”€â”€ rich-editor.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Rich Text Editor Styles */
 .rich-editor {
@@ -1508,7 +1508,7 @@ a:hover { color: var(--accent-hover); }
     background: var(--surface-dim); 
 }
 
-/* ── role-switcher.css ─────────────────────────────────────────── */
+/* â”€â”€ role-switcher.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Dev Role Switcher Panel Styles */
 #role-switcher-panel {
@@ -1602,7 +1602,7 @@ a:hover { color: var(--accent-hover); }
     background-color: #dc3545;
 }
 
-/* ── settings.css ─────────────────────────────────────────── */
+/* â”€â”€ settings.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Settings Page Styles */
 .info-row {
@@ -1663,16 +1663,12 @@ a:hover { color: var(--accent-hover); }
     color: var(--accent-color);
 }
 
-/* ── pages.css ─────────────────────────────────────────── */
+/* â”€â”€ pages.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-@import 'auth.css';
-@import 'heroes.css';
-@import 'footer.css';
-@import 'curriculum.css';
 
 /* pages.css - Page-Specific Styles (Public, Auth, Error Pages) */
 
-/* â”€â”€ Loading Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Loading Page Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .spinner {
     width: 36px;
     height: 36px;
@@ -1683,7 +1679,7 @@ a:hover { color: var(--accent-hover); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* â”€â”€ Error Pages (404, Unauthorized) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Error Pages (404, Unauthorized) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .error-body {
     min-height: calc(100vh - 57px);
     display: flex;
@@ -1698,7 +1694,7 @@ a:hover { color: var(--accent-hover); }
     line-height: 1;
 }
 
-/* â”€â”€ About Page â€” Extensions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ About Page Ã¢â‚¬â€ Extensions Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .instructor-avatar-lg {
     width: 120px;
     height: 120px;
@@ -1715,7 +1711,7 @@ a:hover { color: var(--accent-hover); }
     border: 4px solid #fff;
 }
 
-/* â”€â”€ Public Course Detail Page â€” Extensions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Public Course Detail Page Ã¢â‚¬â€ Extensions Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .sticky-card {
     position: relative;
     z-index: 10;
@@ -1754,7 +1750,7 @@ a:hover { color: var(--accent-hover); }
     background: var(--accent-hover);
 }
 
-/* â”€â”€ Home Page â€” Extensions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Home Page Ã¢â‚¬â€ Extensions Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .stats-bar {
     background: var(--bg-color);
     padding: 2.5rem 0;
@@ -1818,7 +1814,7 @@ a:hover { color: var(--accent-hover); }
 }
 
 
-/* ── heroes.css ─────────────────────────────────────────── */
+/* â”€â”€ heroes.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Hero Section Styles */
 .hero-section {
@@ -1923,12 +1919,8 @@ a:hover { color: var(--accent-hover); }
 }
 
 
-/* ── main.css ─────────────────────────────────────────── */
+/* â”€â”€ main.css â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-@import 'layout.css';
-@import 'stats-cards.css';
-@import 'navbars.css';
-@import 'avatars.css';
 
 /* main.css - Global Styles & Utilities */
 
