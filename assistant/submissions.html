@@ -142,131 +142,429 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
-                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">All Submissions</h1>
+            <!-- Success Toast Banner -->
+            <div id="successBanner" class="alert alert-success border-0 shadow-sm mb-4 animate-fade-in d-none" style="border-radius: 12px; background-color: #d1e7dd; color: #0f5132;">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="stat-icon bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center rounded-circle" style="width: 40px; height: 40px; flex-shrink: 0;">
+                        <i class="bi bi-check-lg" style="font-size: 1.25rem;"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-1">Submission Graded Successfully!</h6>
+                        <p class="small mb-0 text-success-emphasis" id="successBannerText">Student grade and feedback have been successfully saved.</p>
+                    </div>
+                    <button type="button" class="btn-close ms-auto" onclick="document.getElementById('successBanner').classList.add('d-none')"></button>
+                </div>
             </div>
 
-            <div class="row g-4 animate-fade-in" style="height: calc(100vh - 160px);">
-                <!-- Left: Hierarchy Submission List -->
-                <div class="col-md-4 h-100">
-                    <div class="card h-100 border-0 shadow-sm overflow-hidden d-flex flex-column">
-                        <div class="px-3 py-3 border-bottom bg-white d-flex justify-content-between align-items-center">
-                            <span class="small fw-bold text-muted text-uppercase">Submissions</span>
-                            <span class="badge bg-accent-light text-accent rounded-pill px-3">5 Pending</span>
+            <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+                <h1 class="h3 fw-bold mb-0" style="color:var(--text-primary)">Student Submissions</h1>
+            </div>
+
+            <!-- Search and Sorting Panel -->
+            <div class="card border-0 shadow-sm mb-4 animate-fade-in" style="animation-delay: 0.05s;">
+                <div class="card-body p-3">
+                    <div class="row g-3 align-items-center justify-content-between">
+                        <!-- Left Side: Queue Header & Badge -->
+                        <div class="col-md-4 d-flex align-items-center">
+                            <h5 class="fw-bold mb-0 text-dark" style="font-size: 1.1rem;">
+                                Submissions Queue <span class="badge bg-primary text-white rounded-pill ms-2" id="badge-total" style="font-size: 0.72rem; padding: 0.35em 0.8em; font-weight: 700;">6</span>
+                            </h5>
                         </div>
-                        <div class="flex-grow-1 overflow-y-auto bg-light">
-                            
-                            <!-- Course & Module Breadcrumb -->
-                            <div class="px-3 py-2 bg-white border-bottom">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb mb-0" style="font-size: 0.7rem; --bs-breadcrumb-divider: '›';">
-                                        <li class="breadcrumb-item text-muted">Full-Stack Web Development</li>
-                                        <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Module 2</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                            <!-- Student List -->
-                            <div class="p-3 border-bottom bg-accent-light position-relative transition-base" style="cursor: pointer;">
-                                <div class="position-absolute start-0 top-50 translate-middle-y bg-primary rounded-pill" style="width: 3px; height: 20px;"></div>
-                                <div class="d-flex justify-content-between align-items-center ms-1">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <div class="user-avatar-sm">MC</div>
-                                        <span class="fw-bold text-primary" style="font-size: 0.85rem;">Maya Chen</span>
-                                    </div>
-                                    <span class="text-muted" style="font-size: 0.65rem;">2h ago</span>
+                        <!-- Right Side: Filter Dropdown & Search -->
+                        <div class="col-md-8">
+                            <div class="d-flex flex-wrap align-items-center justify-content-md-end gap-3">
+                                <!-- Filter Dropdown Selector -->
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="text-secondary small fw-bold text-nowrap" style="font-size: 0.8rem;"><i class="bi bi-funnel-fill me-1"></i>Filter By:</span>
+                                    <select class="form-select bg-light border-0 px-3 py-2 fw-semibold text-secondary" id="statusFilter" onchange="filterSubmissionsDropdown()" style="font-size: 0.85rem; min-width: 160px; height: 38px; cursor: pointer; border-radius: 20px; box-shadow: none;">
+                                        <option value="all" selected>All Submissions</option>
+                                        <option value="pending">Pending Review</option>
+                                        <option value="graded">Graded Only</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="p-3 border-bottom bg-white hover-bg-light position-relative transition-base" style="cursor: pointer;">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <div class="user-avatar-sm bg-info text-white">JD</div>
-                                        <span class="text-secondary" style="font-size: 0.85rem;">John Doe</span>
+                                <!-- Search Bar -->
+                                <div style="min-width: 250px;">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-0" id="search-addon" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; height: 38px;">
+                                            <i class="bi bi-search text-muted"></i>
+                                        </span>
+                                        <input type="text" id="searchInput" class="form-control bg-light border-0 text-secondary" placeholder="Search by student or course..." aria-describedby="search-addon" onkeyup="searchSubmissions()" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px; font-size: 0.85rem; height: 38px;">
                                     </div>
-                                    <span class="text-muted" style="font-size: 0.65rem;">5h ago</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right: Preview & Grade Area -->
-                <div class="col-md-8 h-100">
-                    <div class="card h-100 border-0 shadow-sm d-flex flex-column overflow-hidden">
-                        <!-- Student Header -->
-                        <div class="p-4 border-bottom bg-white d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="user-avatar-sm" style="width: 40px; height: 40px;">MC</div>
-                                <div>
-                                    <h5 class="fw-bold mb-1" style="font-size: 1rem;">Maya Chen</h5>
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb mb-0" style="font-size: 0.72rem; --bs-breadcrumb-divider: '›';">
-                                            <li class="breadcrumb-item text-muted">Full-Stack Web Development</li>
-                                            <li class="breadcrumb-item text-muted">Module 2</li>
-                                            <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Final Project</li>
-                                        </ol>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-primary btn-sm px-4 fw-bold rounded-2">Submit Grade</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Content Area -->
-                        <div class="flex-grow-1 p-4 overflow-y-auto bg-white">
-                            <div class="row g-4 mb-5 border-bottom pb-4">
-                                <div class="col-md-6">
-                                    <div class="small fw-bold text-muted text-uppercase mb-1" style="font-size: 0.65rem;">Submission Info</div>
-                                    <div class="fw-semibold">April 24, 2026 <span class="text-muted fw-normal ms-2">(2h ago)</span></div>
-                                </div>
-                                <div class="col-md-6 text-md-end">
-                                    <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2">Pending Review</span>
-                                </div>
-                            </div>
-
-                            <!-- Submitted Files Section (Moved Up) -->
-                            <div class="mb-5">
-                                <h6 class="fw-bold mb-3 text-muted text-uppercase" style="font-size: 0.75rem;">Submitted Files</h6>
-                                <div class="p-3 border rounded-3 d-flex align-items-center justify-content-between bg-light">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <i class="bi bi-file-earmark-zip text-primary h3 mb-0"></i>
+            <!-- Submissions Grid List -->
+            <div class="row g-3 animate-fade-in" style="animation-delay: 0.1s;" id="submissionsListContainer">
+                
+                <!-- Submission Card 1 (Maya Chen - Pending) -->
+                <div class="col-12 submission-item" data-status="pending">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm me-3" style="width: 44px; height: 44px; background-color: var(--accent-color);">MC</div>
                                         <div>
-                                            <div class="fw-bold small text-dark">final-project.zip</div>
-                                            <div class="text-muted" style="font-size: 0.7rem;">2.4 MB • ZIP Archive</div>
+                                            <h6 class="mb-0 fw-bold student-name-text">Maya Chen</h6>
+                                            <div class="text-muted small"><i class="bi bi-clock me-1"></i>Submitted 2 hours ago</div>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn btn-white btn-sm shadow-sm border px-3 rounded-pill" download>
-                                        <i class="bi bi-download me-1"></i> Download
-                                    </a>
                                 </div>
-                            </div>
-
-                            <!-- Grading Form -->
-                            <div class="mb-5">
-                                <h6 class="fw-bold mb-4 text-dark" style="font-size: 0.9rem;">Final Assessment</h6>
-                                <div class="row g-4">
-                                    <div class="col-md-3">
-                                        <label class="form-label small fw-bold text-muted">SCORE / 100</label>
-                                        <div class="input-group">
-                                            <input type="number" class="form-control form-control-lg border-2 text-center fw-bold text-primary" placeholder="0" style="border-top-left-radius: var(--radius-lg); border-bottom-left-radius: var(--radius-lg);">
-                                            <span class="input-group-text bg-light border-2 fw-bold" style="border-top-right-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg);">/ 100</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <label class="form-label small fw-bold text-muted">FEEDBACK</label>
-                                        <textarea class="form-control border-2" rows="6" placeholder="Provide constructive feedback..." style="border-radius: var(--radius-lg);"></textarea>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Full-Stack Web Development</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 2: Final Project</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2 fw-semibold">Pending</span>
+                                        <a href="grade-submission.html?student=maya" class="btn btn-primary btn-sm px-4 py-2 rounded-3 fw-bold">Grade</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Submission Card 2 (John Doe - Pending) -->
+                <div class="col-12 submission-item" data-status="pending">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-info text-white me-3" style="width: 44px; height: 44px;">JD</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">John Doe</h6>
+                                            <div class="text-muted small"><i class="bi bi-clock me-1"></i>Submitted 5 hours ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">UI/UX Design Masterclass</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 1: Wireframing</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2 fw-semibold">Pending</span>
+                                        <a href="grade-submission.html?student=john" class="btn btn-primary btn-sm px-4 py-2 rounded-3 fw-bold">Grade</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission Card 3 (Sarah Miller - Pending) -->
+                <div class="col-12 submission-item" data-status="pending">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-success text-white me-3" style="width: 44px; height: 44px;">SM</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">Sarah Miller</h6>
+                                            <div class="text-muted small"><i class="bi bi-clock me-1"></i>Submitted 1 day ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Python for Data Analysis</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 3: Pandas & Numpy</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2 fw-semibold">Pending</span>
+                                        <a href="grade-submission.html?student=sarah" class="btn btn-primary btn-sm px-4 py-2 rounded-3 fw-bold">Grade</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission Card 4 (David Clark - Pending) -->
+                <div class="col-12 submission-item" data-status="pending">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-warning text-dark me-3" style="width: 44px; height: 44px;">DC</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">David Clark</h6>
+                                            <div class="text-muted small"><i class="bi bi-clock me-1"></i>Submitted 2 days ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Digital Marketing Strategy 2026</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 2: SEO Campaign</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2 fw-semibold">Pending</span>
+                                        <a href="grade-submission.html?student=david" class="btn btn-primary btn-sm px-4 py-2 rounded-3 fw-bold">Grade</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission Card 5 (Michael Kane - Graded) -->
+                <div class="col-12 submission-item" data-status="graded">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-secondary text-white me-3" style="width: 44px; height: 44px;">MK</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">Michael Kane</h6>
+                                            <div class="text-muted small"><i class="bi bi-calendar-check me-1"></i>Graded yesterday</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Web Design Fundamentals</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 1: Semantic Structure HTML</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <div class="me-2 text-md-end">
+                                            <div class="fw-bold text-success h5 mb-0">92/100</div>
+                                            <span class="text-muted small" style="font-size: 10px;">Graded Score</span>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm px-3 py-2 rounded-3 fw-semibold" onclick="showFeedback('Michael Kane', 'Web Design Fundamentals', 92, 'Excellent work on the semantic HTML structure! The tags like &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; are all aligned correctly.')">View Feedback</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submission Card 6 (Emily Davis - Graded) -->
+                <div class="col-12 submission-item" data-status="graded">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-secondary text-white me-3" style="width: 44px; height: 44px;">ED</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">Emily Davis</h6>
+                                            <div class="text-muted small"><i class="bi bi-calendar-check me-1"></i>Graded 3 days ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Full-Stack Web Development</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 1: HTML & CSS Portfolio</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <div class="me-2 text-md-end">
+                                            <div class="fw-bold text-success h5 mb-0">88/100</div>
+                                            <span class="text-muted small" style="font-size: 10px;">Graded Score</span>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm px-3 py-2 rounded-3 fw-semibold" onclick="showFeedback('Emily Davis', 'Full-Stack Web Development', 88, 'Strong execution of responsive layout styling. CSS layout grids and flexboxes were integrated in a professional modular format. Keep it up!')">View Feedback</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty State element when search yields no matches -->
+            <div id="emptySearchState" class="empty-state-container d-none animate-fade-in py-5">
+                <i class="bi bi-search text-muted display-4 mb-3"></i>
+                <h4 class="fw-bold">No submissions found</h4>
+                <p class="text-secondary small">We couldn\'t find any submissions matching your search term. Try adjusting your query.</p>
             </div>
         </main>
     </div>
 
+    <!-- View Feedback Modal -->
+    <div class="modal fade" id="feedbackDetailModal" tabindex="-1" aria-labelledby="feedbackDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="feedbackDetailModalLabel">Grade & Feedback Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-flex align-items-center mb-4 border-bottom pb-3">
+                        <div class="user-avatar-sm me-3 bg-secondary text-white" id="modal-student-avatar" style="width: 44px; height: 44px; font-weight: 700; font-size: 1rem;">MK</div>
+                        <div>
+                            <h6 class="fw-bold mb-0" id="modal-student-name">Michael Kane</h6>
+                            <p class="text-muted small mb-0" id="modal-course-name">Web Design Fundamentals</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 bg-light rounded-3 mb-4 text-center">
+                        <div class="text-muted small mb-1">Final Score</div>
+                        <div class="h2 fw-bold mb-0 text-success" id="modal-score">92/100</div>
+                    </div>
+                    
+                    <h6 class="fw-bold small mb-2 text-dark">Instructor Comments:</h6>
+                    <p class="text-secondary small mb-0" id="modal-feedback-text" style="line-height: 1.6;"></p>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-primary px-4 fw-semibold rounded-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        // Custom interactive state filtering and search
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('graded') === 'success') {
+                const studentName = urlParams.get('student') || 'Student';
+                const score = urlParams.get('score') || '100';
+                
+                // Set the success toast alert text
+                document.getElementById('successBannerText').innerHTML = `<strong>${studentName}</strong> has been successfully graded with a score of <strong>${score}/100</strong>.`;
+                document.getElementById('successBanner').classList.remove('d-none');
+                
+                // Automatically add the newly graded item as a mock graded item
+                addNewGradedMockItem(studentName, score);
+            }
+            updateCounters();
+        });
+
+        function addNewGradedMockItem(name, score) {
+            // Check if student already graded exists, otherwise add it
+            const existingGraded = Array.from(document.querySelectorAll('.submission-item')).some(item => {
+                return item.querySelector('.student-name-text').textContent === name && item.getAttribute('data-status') === 'graded';
+            });
+            if (existingGraded) return;
+
+            // Remove the corresponding pending item if it exists
+            const pendingItems = document.querySelectorAll('.submission-item[data-status="pending"]');
+            pendingItems.forEach(item => {
+                if (item.querySelector('.student-name-text').textContent === name) {
+                    item.remove();
+                }
+            });
+
+            // Map standard colors
+            const initials = name.split(' ').map(n => n[0]).join('');
+            
+            const container = document.getElementById('submissionsListContainer');
+            const newItemHTML = `
+                <div class="col-12 submission-item" data-status="graded">
+                    <div class="card border-0 shadow-sm transition-base hover-shadow-md">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-avatar-sm bg-secondary text-white me-3" style="width: 44px; height: 44px;">${initials}</div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold student-name-text">${name}</h6>
+                                            <div class="text-muted small"><i class="bi bi-calendar-check me-1"></i>Graded just now</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="fw-bold small course-name-text">Full-Stack Web Development</div>
+                                    <div class="text-muted" style="font-size: 0.78rem;">Module 2: Final Project</div>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-3">
+                                        <div class="me-2 text-md-end">
+                                            <div class="fw-bold text-success h5 mb-0">${score}/100</div>
+                                            <span class="text-muted small" style="font-size: 10px;">Graded Score</span>
+                                        </div>
+                                        <button class="btn btn-outline-secondary btn-sm px-3 py-2 rounded-3 fw-semibold" onclick="showFeedback('${name}', 'Full-Stack Web Development', ${score}, 'Outstanding execution. Code structures are modular and demonstrate clear implementation principles.')">View Feedback</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('afterbegin', newItemHTML);
+            updateCounters();
+        }
+
+        function filterSubmissionsDropdown() {
+            const status = document.getElementById('statusFilter').value;
+
+            // Toggle element lists
+            const items = document.querySelectorAll('.submission-item');
+            items.forEach(item => {
+                const itemStatus = item.getAttribute('data-status');
+                if (status === 'all' || itemStatus === status) {
+                    item.classList.remove('d-none');
+                } else {
+                    item.classList.add('d-none');
+                }
+            });
+            
+            // Reapply search logic filter
+            searchSubmissions();
+        }
+
+        function searchSubmissions() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.submission-item');
+            const activeStatus = document.getElementById('statusFilter').value;
+
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const studentName = item.querySelector('.student-name-text').textContent.toLowerCase();
+                const courseName = item.querySelector('.course-name-text').textContent.toLowerCase();
+                const matchesSearch = studentName.includes(query) || courseName.includes(query);
+                const matchesStatus = activeStatus === 'all' || item.getAttribute('data-status') === activeStatus;
+
+                if (matchesSearch && matchesStatus) {
+                    item.classList.remove('d-none');
+                    visibleCount++;
+                } else {
+                    item.classList.add('d-none');
+                }
+            });
+
+            const emptyState = document.getElementById('emptySearchState');
+            if (visibleCount === 0) {
+                emptyState.classList.remove('d-none');
+            } else {
+                emptyState.classList.add('d-none');
+            }
+        }
+
+        function updateCounters() {
+            const items = Array.from(document.querySelectorAll('.submission-item'));
+            const total = items.length;
+            document.getElementById('badge-total').textContent = total;
+        }
+
+        function showFeedback(studentName, courseName, score, feedbackText) {
+            document.getElementById('modal-student-name').textContent = studentName;
+            document.getElementById('modal-course-name').textContent = courseName;
+            document.getElementById('modal-score').textContent = `${score}/100`;
+            document.getElementById('modal-feedback-text').textContent = feedbackText;
+
+            const initials = studentName.split(' ').map(n => n[0]).join('');
+            const avatarEl = document.getElementById('modal-student-avatar');
+            avatarEl.textContent = initials;
+
+            const bootstrapModal = new bootstrap.Modal(document.getElementById('feedbackDetailModal'));
+            bootstrapModal.show();
+        }
+    </script>
 </body>
 </html>
 
